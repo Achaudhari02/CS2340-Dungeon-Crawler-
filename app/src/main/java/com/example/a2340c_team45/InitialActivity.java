@@ -10,10 +10,13 @@ import android.widget.EditText;
 import android.view.View;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.widget.RadioButton;
 
 public class InitialActivity extends AppCompatActivity {
 
     ImageButton spr1Button, spr2Button, spr3Button;
+
+    RadioButton easySel, medSel, hardSel;
     EditText name;
     Player player = new Player();
     Bitmap playerImagePath;
@@ -26,6 +29,8 @@ public class InitialActivity extends AppCompatActivity {
         spr1Button = findViewById(R.id.spr1Button);
         spr2Button = findViewById(R.id.spr2Button);
         spr3Button = findViewById(R.id.spr3Button);
+        easySel = findViewById(R.id.easyDiff);
+
 
         spr1Button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +53,26 @@ public class InitialActivity extends AppCompatActivity {
             }
         });
 
+
+//        easySel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
+//        medSel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
+//
+//        hardSel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
 
     }
 

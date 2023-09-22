@@ -11,55 +11,121 @@
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginEnd="101dp"
+        android:layout_marginBottom="621dp"
         android:ems="10"
+        android:hint="Enter your name"
         android:inputType="text"
-        android:text="Name"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="65dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/spr1Button"
         android:layout_width="61dp"
         android:layout_height="53dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="79dp"
-        android:layout_marginBottom="524dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/spr2Button"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="151dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name"
-        app:srcCompat="@drawable/knight_f_idle_anim_f1" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/knight_f_idle_anim_f1"
+        tools:ignore="MissingConstraints" />
 
     <ImageButton
         android:id="@+id/spr2Button"
         android:layout_width="30dp"
         android:layout_height="40dp"
-        android:layout_marginStart="79dp"
-        android:layout_marginTop="51dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginBottom="530dp"
+        android:layout_marginStart="190dp"
+        android:layout_marginTop="157dp"
         android:adjustViewBounds="false"
         android:background="@android:color/transparent"
         android:cropToPadding="false"
         android:scaleX="2"
         android:scaleY="2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/spr3Button"
-        app:layout_constraintStart_toEndOf="@+id/spr1Button"
-        app:layout_constraintTop_toBottomOf="@+id/name"
-        app:srcCompat="@drawable/dwarf_f_idle_anim_f2" />
+        app:layout_constraintBottom_toBottomOf="@+id/spr1Button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/dwarf_f_idle_anim_f2"
+        tools:ignore="MissingConstraints" />
 
     <ImageButton
         android:id="@+id/spr3Button"
         android:layout_width="61dp"
         android:layout_height="53dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="524dp"
+        android:layout_marginStart="249dp"
+        android:layout_marginTop="154dp"
+        app:layout_constraintBottom_toBottomOf="@+id/spr2Button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/doc_idle_anim_f0"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <RadioGroup
+        android:layout_width="130dp"
+        android:layout_height="168dp"
+        android:layout_marginTop="230dp"
+        android:layout_marginBottom="366dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/spr2Button"
-        app:srcCompat="@drawable/doc_idle_anim_f0" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Difficulty Selection:" />
+
+        <RadioButton
+            android:id="@+id/easyDiff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="easy" />
+
+        <RadioButton
+            android:id="@+id/medDiff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="medium" />
+
+        <RadioButton
+            android:id="@+id/hardDiff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="hard" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/continueToGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="300dp"
+        android:layout_marginStart="124dp"
+        android:text="Continue To Game"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="478dp"
+        tools:ignore="MissingConstraints" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
