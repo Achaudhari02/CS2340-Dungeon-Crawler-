@@ -7,16 +7,59 @@
     android:background="#009688"
     tools:context=".InitialActivity">
 
-    <TextView
-        android:id="@+id/textView3"
+    <EditText
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="400dp"
-        android:text="Config Window"
-        android:textSize="25dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Name"
+        tools:layout_editor_absoluteX="100dp"
+        tools:layout_editor_absoluteY="65dp" />
+
+    <ImageButton
+        android:id="@+id/spr1Button"
+        android:layout_width="61dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="79dp"
+        android:layout_marginBottom="524dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/spr2Button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name"
+        app:srcCompat="@drawable/knight_f_idle_anim_f1" />
+
+    <ImageButton
+        android:id="@+id/spr2Button"
+        android:layout_width="30dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="79dp"
+        android:layout_marginTop="51dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="530dp"
+        android:adjustViewBounds="false"
+        android:background="@android:color/transparent"
+        android:cropToPadding="false"
+        android:scaleX="2"
+        android:scaleY="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/spr3Button"
+        app:layout_constraintStart_toEndOf="@+id/spr1Button"
+        app:layout_constraintTop_toBottomOf="@+id/name"
+        app:srcCompat="@drawable/dwarf_f_idle_anim_f2" />
+
+    <ImageButton
+        android:id="@+id/spr3Button"
+        android:layout_width="61dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="524dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/spr2Button"
+        app:srcCompat="@drawable/doc_idle_anim_f0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
