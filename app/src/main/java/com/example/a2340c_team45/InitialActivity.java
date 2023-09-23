@@ -19,7 +19,7 @@ public class InitialActivity extends AppCompatActivity {
     ImageButton spr1Button, spr2Button, spr3Button;
 
     Button continueToGameButton;
-    EditText name;
+    String name;
     Player player = new Player();
     Bitmap playerImagePath;
 
@@ -27,13 +27,10 @@ public class InitialActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_initial);
-
-        name = findViewById(R.id.name);
         spr1Button = findViewById(R.id.spr1Button);
         spr2Button = findViewById(R.id.spr2Button);
         spr3Button = findViewById(R.id.spr3Button);
         continueToGameButton = findViewById(R.id.continueToGame);
-
 
         spr1Button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +56,8 @@ public class InitialActivity extends AppCompatActivity {
         continueToGameButton.setOnClickListener(v -> {
             RadioGroup difficultySelection = findViewById(R.id.diffSel);
             int selectedId = difficultySelection.getCheckedRadioButtonId();
+            name = ((EditText)findViewById(R.id.name)).getText().toString();
+            System.out.println(name);
 
             RadioButton radioButton = (RadioButton) findViewById(selectedId);
 
@@ -73,6 +72,11 @@ public class InitialActivity extends AppCompatActivity {
             } else {
                 difficulty = 3;
             }
+            Intent next = new Intent(getApplicationContext(), GameActivity.class);
+            next.putExtra("diff", difficulty);
+            next.putExtra("skin", playerImagePath);
+            next.putExtra("name", name);
+            startActivity(next);
         });
 
     }
