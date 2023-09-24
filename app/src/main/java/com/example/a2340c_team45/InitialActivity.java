@@ -32,12 +32,17 @@ public class InitialActivity extends AppCompatActivity {
         spr3Button = findViewById(R.id.spr3Button);
         continueToGameButton = findViewById(R.id.continueToGame);
 
+
         spr1Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 playerImagePath = ((BitmapDrawable)spr1Button.getDrawable()).getBitmap();
             }
         });
+
+
+
+
 
         spr2Button.setOnClickListener(new View.OnClickListener() {
             @Override
