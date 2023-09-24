@@ -81,7 +81,13 @@ public class InitialActivity extends AppCompatActivity {
             next.putExtra("diff", difficulty);
             next.putExtra("skin", playerImagePath);
             next.putExtra("name", name);
-            startActivity(next);
+            if (name != null) {
+                for (int i = 0; i < name.length(); i++) {
+                    if (!(name.substring(i,i + 1).equals(" "))) {
+                        startActivity(next);
+                    }
+                }
+            }
         });
 
     }
