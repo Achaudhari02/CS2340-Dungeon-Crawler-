@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -34,10 +35,15 @@ public class GameActivity extends AppCompatActivity {
         reciever_msg_name.setText(name);
         reciever_mag_diff.setText(diff_str);
 
+        ImageView playerSprite = findViewById(R.id.player_sprite_id);
+        Bitmap playerImagePath = intent.getParcelableExtra("skin");
+        playerSprite.setImageBitmap(playerImagePath);
+
+
         endButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), EndGame.class);
+                Intent intent = new Intent(getApplicationContext(), EndActivity.class);
                 startActivities(new Intent[]{intent});
             }
         });
