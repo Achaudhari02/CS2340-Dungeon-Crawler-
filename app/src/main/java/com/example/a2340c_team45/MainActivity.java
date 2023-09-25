@@ -8,7 +8,8 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    Button strButton, extButton;
+    private Button strButton;
+    private Button extButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

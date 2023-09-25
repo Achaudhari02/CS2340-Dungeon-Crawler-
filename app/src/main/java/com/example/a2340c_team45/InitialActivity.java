@@ -16,12 +16,14 @@ import android.widget.RadioGroup;
 
 public class InitialActivity extends AppCompatActivity {
 
-    ImageButton spr1Button, spr2Button, spr3Button;
+    private ImageButton spr1Button;
+    private ImageButton spr2Button;
+    private ImageButton spr3Button;
 
-    Button continueToGameButton;
-    String name;
-    Player player = new Player();
-    Bitmap playerImagePath;
+    private Button continueToGameButton;
+    private String name;
+    private Player player = new Player();
+    private Bitmap playerImagePath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +38,7 @@ public class InitialActivity extends AppCompatActivity {
         spr1Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                playerImagePath = ((BitmapDrawable)spr1Button.getDrawable()).getBitmap();
+                playerImagePath = ((BitmapDrawable) spr1Button.getDrawable()).getBitmap();
             }
         });
 
@@ -47,21 +49,21 @@ public class InitialActivity extends AppCompatActivity {
         spr2Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                playerImagePath = ((BitmapDrawable)spr2Button.getDrawable()).getBitmap();
+                playerImagePath = ((BitmapDrawable) spr2Button.getDrawable()).getBitmap();
             }
         });
 
         spr3Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                playerImagePath = ((BitmapDrawable)spr3Button.getDrawable()).getBitmap();
+                playerImagePath = ((BitmapDrawable) spr3Button.getDrawable()).getBitmap();
             }
         });
 
         continueToGameButton.setOnClickListener(v -> {
             RadioGroup difficultySelection = findViewById(R.id.diffSel);
             int selectedId = difficultySelection.getCheckedRadioButtonId();
-            name = ((EditText)findViewById(R.id.name)).getText().toString();
+            name = ((EditText) findViewById(R.id.name)).getText().toString();
             System.out.println(name);
 
             RadioButton radioButton = (RadioButton) findViewById(selectedId);
@@ -83,7 +85,7 @@ public class InitialActivity extends AppCompatActivity {
             next.putExtra("name", name);
             if (name != null) {
                 for (int i = 0; i < name.length(); i++) {
-                    if (!(name.substring(i,i + 1).equals(" "))) {
+                    if (!(name.substring(i, i + 1).equals(" "))) {
                         startActivity(next);
                     }
                 }
