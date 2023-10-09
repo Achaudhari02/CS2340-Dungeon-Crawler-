@@ -15,8 +15,10 @@ public class EndActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end);
         ArrayList<LeaderboardEntry> leaderboardText = Leaderboard.getLeaderboard().getArrayList();
-
+        int score = getIntent().getIntExtra("score", 0);
+        String name = getIntent().getStringExtra("name");
         Leaderboard t = Leaderboard.getLeaderboard();
+        t.add(new LeaderboardEntry(name, score));
         t.add(new LeaderboardEntry("test", 5)); // entries temporarily added to test functionality
         t.add(new LeaderboardEntry("test1", 7));
         t.add(new LeaderboardEntry("test2", 8));
