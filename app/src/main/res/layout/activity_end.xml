@@ -7,10 +7,10 @@
     tools:context=".EndActivity">
 
     <TextView
-        android:id="@+id/leaderboard"
+        android:id="@+id/scoreboard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="test"
-        tools:layout_editor_absoluteX="177dp"
-        tools:layout_editor_absoluteY="116dp" />
+        android:text="TextView"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="73dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

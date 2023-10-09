@@ -14,6 +14,9 @@ public class LeaderboardEntry {
     public int getScore() {
         return score;
     }
+    public String getName() {
+        return name;
+    }
     public String getEntry() {
         return "Name: " + name + "  Score: " + score + "  Date: " + date;
     }

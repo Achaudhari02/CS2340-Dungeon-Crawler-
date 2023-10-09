@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Leaderboard {
     private static Leaderboard leaderboard;
-    public ArrayList<LeaderboardEntry> entries = new ArrayList<>();
+    public ArrayList<LeaderboardEntry> entries = new ArrayList<>(100);
     private Leaderboard() {
 
     }
@@ -24,9 +24,16 @@ public class Leaderboard {
     }
     public String toString() {
         String list = "";
-        for(int i = 0; i < 5; i++) {
-            list = list.concat(entries.get(i).getEntry());
-            list = list.concat("\n");
+        if (entries.size() >=5 ) {
+            for (int i = 0; i < 5; i++) {
+                list = list.concat(entries.get(i).getEntry());
+                list = list.concat("\n");
+            }
+        } else {
+            for (int i = 0; i < entries.size(); i++) {
+                list = list.concat(entries.get(i).getEntry());
+                list = list.concat("\n");
+            }
         }
         return list;
     }
@@ -35,6 +42,7 @@ public class Leaderboard {
             entries.add(0, entry);
         } else {
             for (int i = entries.size() - 1; i >= 0; i--) {
+                entries.add(entry);
                 if (entries.get(i).getScore() < entry.getScore()) {
                     LeaderboardEntry temp = entries.get(i);
                     entries.set(i, entry);
