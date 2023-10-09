@@ -10,7 +10,7 @@ public class Leaderboard {
     private Leaderboard() {
 
     }
-    public static Leaderboard getLeaderboard() {
+    public static Leaderboard getLeaderboard() { //singleton for leaderboard
         if (leaderboard == null) {
             leaderboard = new Leaderboard();
         }
@@ -22,7 +22,7 @@ public class Leaderboard {
     public ArrayList<LeaderboardEntry> getArrayList() {
         return entries;
     }
-    public String toString() {
+    public String toString() { // prints out top 5 scores with name, score, and date
         String list = "";
         if (entries.size() >=5 ) {
             for (int i = 0; i < 5; i++) {
@@ -37,7 +37,7 @@ public class Leaderboard {
         }
         return list;
     }
-    public void add(LeaderboardEntry entry) {
+    public void add(LeaderboardEntry entry) { // adds the entry and sorts by descending order
         if (entries.size() == 0) {
             entries.add(0, entry);
         } else {

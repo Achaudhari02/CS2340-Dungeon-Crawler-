@@ -17,7 +17,7 @@ public class EndActivity extends AppCompatActivity {
         ArrayList<LeaderboardEntry> leaderboardText = Leaderboard.getLeaderboard().getArrayList();
 
         Leaderboard t = Leaderboard.getLeaderboard();
-        t.add(new LeaderboardEntry("test", 5));
+        t.add(new LeaderboardEntry("test", 5)); // entries temporarily added to test functionality
         t.add(new LeaderboardEntry("test1", 7));
         t.add(new LeaderboardEntry("test2", 8));
         t.add(new LeaderboardEntry("test3", 9));
