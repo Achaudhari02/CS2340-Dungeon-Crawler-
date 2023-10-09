@@ -8,4 +8,5 @@ public class Player {
     private int difficulty;
     private Bitmap playerImage;
 
+
 }
