@@ -22,7 +22,7 @@ public class InitialActivity extends AppCompatActivity {
 
     private Button continueToGameButton;
     private String name;
-    private Player player = new Player();
+    private Player player = Player.getPlayer();
     private Bitmap playerImagePath;
 
     @Override
