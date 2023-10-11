@@ -16,6 +16,15 @@
             android:name=".view.EndActivity"
             android:exported="false" />
         <activity
+            android:name=".view.Map1"
+            android:exported="false" />
+        <activity
+            android:name=".view.Map2"
+            android:exported="false" />
+        <activity
+            android:name=".view.Map3"
+            android:exported="false" />
+        <activity
             android:name=".view.GameActivity"
             android:exported="false" />
         <activity
