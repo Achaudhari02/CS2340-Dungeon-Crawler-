@@ -7,9 +7,7 @@ import java.util.List;
 public class Leaderboard {
     private static Leaderboard leaderboard;
     public ArrayList<LeaderboardEntry> entries = new ArrayList<>(100);
-    private Leaderboard() {
-
-    }
+    private Leaderboard() {}
     public static Leaderboard getLeaderboard() { //singleton for leaderboard
         if (leaderboard == null) {
             leaderboard = new Leaderboard();

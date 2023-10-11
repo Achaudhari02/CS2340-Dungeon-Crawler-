@@ -35,6 +35,7 @@ public class InitialActivity extends AppCompatActivity {
         spr2Button = findViewById(R.id.spr2Button);
         spr3Button = findViewById(R.id.spr3Button);
         continueToGameButton = findViewById(R.id.continueToGame);
+//        map1_next = findViewById(R.id.map1_next);
 
 
         spr1Button.setOnClickListener(new View.OnClickListener() {
@@ -43,10 +44,6 @@ public class InitialActivity extends AppCompatActivity {
                 playerImagePath = ((BitmapDrawable) spr1Button.getDrawable()).getBitmap();
             }
         });
-
-
-
-
 
         spr2Button.setOnClickListener(new View.OnClickListener() {
             @Override

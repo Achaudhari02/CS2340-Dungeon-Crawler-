@@ -19,7 +19,7 @@ public class GameActivity extends AppCompatActivity {
     private TextView recieverMsgName;
     private TextView recieverMagDiff;
     private TextView startingHp;
-    private Button endButton;
+    private Button endButton, nextButton;
     private TextView scoreView;
     private int score = 1000;
     private int time;
@@ -37,6 +37,7 @@ public class GameActivity extends AppCompatActivity {
         recieverMagDiff = findViewById(R.id.sel_diff_id);
         startingHp = findViewById(R.id.starting_hp_id);
         endButton = findViewById(R.id.endButton);
+        nextButton = findViewById(R.id.next);
 
         //using intent to get selected difficulty and entered name
         int diff = getIntent().getIntExtra("diff", 1);
@@ -57,8 +58,6 @@ public class GameActivity extends AppCompatActivity {
         playerSprite.setImageBitmap(playerImagePath);
 
 
-
-
         endButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,6 +72,14 @@ public class GameActivity extends AppCompatActivity {
                 //adding the current player and score to leaderboard
                 Leaderboard lb = Leaderboard.getLeaderboard();
                 lb.add(new LeaderboardEntry(name,score));
+            }
+        });
+
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Map1.class);
+                startActivities(new Intent[]{intent});
             }
         });
 
