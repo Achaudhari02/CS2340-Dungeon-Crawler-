@@ -1,8 +1,8 @@
-package com.example.a2340c_team45;
+package com.example.a2340c_team45.viewmodel;
+
+import com.example.a2340c_team45.models.LeaderboardEntry;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 public class Leaderboard {
     private static Leaderboard leaderboard;
