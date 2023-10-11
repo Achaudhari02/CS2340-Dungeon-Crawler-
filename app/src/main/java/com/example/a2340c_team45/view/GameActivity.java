@@ -76,7 +76,8 @@ public class GameActivity extends AppCompatActivity {
 
                 //adding the current player and score to leaderboard
                 Leaderboard lb = Leaderboard.getLeaderboard();
-                lb.add(new LeaderboardEntry(name,score));
+                LeaderboardEntry newEntry = new LeaderboardEntry(name, score);
+                lb.add(newEntry);
             }
         });
 
