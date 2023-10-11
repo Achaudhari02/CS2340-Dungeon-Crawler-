@@ -1,23 +1,25 @@
-package com.example.a2340c_team45;
+package com.example.a2340c_team45.viewmodel;
+
+import com.example.a2340c_team45.models.LeaderboardEntry;
 
 import java.util.ArrayList;
 
-public class LeaderboardViewModel {
-    private static LeaderboardViewModel leaderboardViewModel;
-    public ArrayList<LeaderboardEntryModel> entries = new ArrayList<>(100);
-    private LeaderboardViewModel() {
+public class Leaderboard {
+    private static Leaderboard leaderboard;
+    public ArrayList<LeaderboardEntry> entries = new ArrayList<>(100);
+    private Leaderboard() {
 
     }
-    public static LeaderboardViewModel getLeaderboard() { //singleton for leaderboard
-        if (leaderboardViewModel == null) {
-            leaderboardViewModel = new LeaderboardViewModel();
+    public static Leaderboard getLeaderboard() { //singleton for leaderboard
+        if (leaderboard == null) {
+            leaderboard = new Leaderboard();
         }
-        return leaderboardViewModel;
+        return leaderboard;
     }
-    public void setArrayList(ArrayList<LeaderboardEntryModel> entries) {
+    public void setArrayList(ArrayList<LeaderboardEntry> entries) {
         this.entries = entries;
     }
-    public ArrayList<LeaderboardEntryModel> getArrayList() {
+    public ArrayList<LeaderboardEntry> getArrayList() {
         return entries;
     }
     public String toString() { // prints out top 5 scores with name, score, and date
@@ -35,14 +37,14 @@ public class LeaderboardViewModel {
         }
         return list;
     }
-    public void add(LeaderboardEntryModel entry) { // adds the entry and sorts by descending order
+    public void add(LeaderboardEntry entry) { // adds the entry and sorts by descending order
         if (entries.size() == 0) {
             entries.add(0, entry);
         } else {
             for (int i = entries.size() - 1; i >= 0; i--) {
                 entries.add(entry);
                 if (entries.get(i).getScore() < entry.getScore()) {
-                    LeaderboardEntryModel temp = entries.get(i);
+                    LeaderboardEntry temp = entries.get(i);
                     entries.set(i, entry);
                     entries.set(i + 1, temp);
                 }

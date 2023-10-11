@@ -1,4 +1,4 @@
-package com.example.a2340c_team45;
+package com.example.a2340c_team45.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,7 +14,10 @@ import android.graphics.drawable.BitmapDrawable;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-public class InitialActivityView extends AppCompatActivity {
+import com.example.a2340c_team45.models.Player;
+import com.example.a2340c_team45.R;
+
+public class InitialActivity extends AppCompatActivity {
 
     private ImageButton spr1Button;
     private ImageButton spr2Button;
@@ -22,7 +25,7 @@ public class InitialActivityView extends AppCompatActivity {
 
     private Button continueToGameButton;
     private String name;
-    private PlayerModel playerModel = PlayerModel.getPlayer();
+    private Player player = Player.getPlayer();
     private Bitmap playerImagePath;
 
     @Override
@@ -79,7 +82,7 @@ public class InitialActivityView extends AppCompatActivity {
             } else {
                 difficulty = 3;
             }
-            Intent next = new Intent(getApplicationContext(), GameActivityView.class);
+            Intent next = new Intent(getApplicationContext(), GameActivity.class);
             next.putExtra("diff", difficulty);
             next.putExtra("skin", playerImagePath);
             next.putExtra("name", name);

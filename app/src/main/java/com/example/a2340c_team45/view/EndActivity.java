@@ -1,4 +1,4 @@
-package com.example.a2340c_team45;
+package com.example.a2340c_team45.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class EndActivityView extends AppCompatActivity {
+import com.example.a2340c_team45.R;
+import com.example.a2340c_team45.viewmodel.Leaderboard;
+
+public class EndActivity extends AppCompatActivity {
     private TextView scoreboard;
     private TextView lbReciever;
 
@@ -30,12 +33,12 @@ public class EndActivityView extends AppCompatActivity {
         restart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), InitialActivityView.class);
+                Intent intent = new Intent(getApplicationContext(), InitialActivity.class);
                 startActivities(new Intent[]{intent});
             }
         });
 
-        LeaderboardViewModel lb = LeaderboardViewModel.getLeaderboard();
+        Leaderboard lb = Leaderboard.getLeaderboard();
         lbReciever.setText(lb.toString());
         Log.d("MainActivity", lb.toString());
 

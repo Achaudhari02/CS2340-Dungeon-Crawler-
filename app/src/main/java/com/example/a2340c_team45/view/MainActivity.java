@@ -1,4 +1,4 @@
-package com.example.a2340c_team45;
+package com.example.a2340c_team45.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivityView extends AppCompatActivity {
+import com.example.a2340c_team45.R;
+
+public class MainActivity extends AppCompatActivity {
     private Button strButton;
     private Button extButton;
 
@@ -20,7 +22,7 @@ public class MainActivityView extends AppCompatActivity {
         strButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), InitialActivityView.class);
+                Intent intent = new Intent(getApplicationContext(), InitialActivity.class);
                 startActivities(new Intent[]{intent});
             }
         });

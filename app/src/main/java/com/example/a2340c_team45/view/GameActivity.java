@@ -1,4 +1,4 @@
-package com.example.a2340c_team45;
+package com.example.a2340c_team45.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,7 +15,11 @@ import java.util.Calendar;
 
 import android.os.Handler;
 
-public class GameActivityView extends AppCompatActivity {
+import com.example.a2340c_team45.models.LeaderboardEntry;
+import com.example.a2340c_team45.R;
+import com.example.a2340c_team45.viewmodel.Leaderboard;
+
+public class GameActivity extends AppCompatActivity {
     private TextView recieverMsgName;
     private TextView recieverMagDiff;
     private TextView startingHp;
@@ -50,7 +54,7 @@ public class GameActivityView extends AppCompatActivity {
         running = true;
         doTime();
         //creating leaderboard arraylist
-        ArrayList<LeaderboardEntryModel> leaderboard = LeaderboardViewModel.getLeaderboard().getArrayList();
+        ArrayList<LeaderboardEntry> leaderboard = Leaderboard.getLeaderboard().getArrayList();
 
         ImageView playerSprite = findViewById(R.id.player_sprite_id);
         Bitmap playerImagePath = intent.getParcelableExtra("skin");
@@ -65,14 +69,14 @@ public class GameActivityView extends AppCompatActivity {
                 Calendar cl2 = Calendar.getInstance();
                 running = false;
                 score -= time;
-                Intent intent = new Intent(getApplicationContext(), EndActivityView.class);
+                Intent intent = new Intent(getApplicationContext(), EndActivity.class);
                 intent.putExtra("score", score);
                 intent.putExtra("name", name);
                 startActivities(new Intent[]{intent});
 
                 //adding the current player and score to leaderboard
-                LeaderboardViewModel lb = LeaderboardViewModel.getLeaderboard();
-                lb.add(new LeaderboardEntryModel(name,score));
+                Leaderboard lb = Leaderboard.getLeaderboard();
+                lb.add(new LeaderboardEntry(name,score));
             }
         });
 
