@@ -1,4 +1,4 @@
-package com.example.a2340c_team45;
+package com.example.a2340c_team45.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,7 +14,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import java.util.ArrayList;
+import com.example.a2340c_team45.models.Player;
+import com.example.a2340c_team45.R;
 
 public class InitialActivity extends AppCompatActivity {
 

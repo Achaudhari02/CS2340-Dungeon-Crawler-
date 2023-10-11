@@ -1,4 +1,4 @@
-package com.example.a2340c_team45;
+package com.example.a2340c_team45.models;
 
 import android.graphics.Bitmap;
 

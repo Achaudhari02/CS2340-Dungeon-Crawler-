@@ -1,4 +1,4 @@
-package com.example.a2340c_team45;
+package com.example.a2340c_team45.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,11 +9,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import java.time.Instant;
+
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
+
 import android.os.Handler;
+
+import com.example.a2340c_team45.models.LeaderboardEntry;
+import com.example.a2340c_team45.R;
+import com.example.a2340c_team45.viewmodel.Leaderboard;
 
 public class GameActivity extends AppCompatActivity {
     private TextView recieverMsgName;
@@ -78,7 +82,8 @@ public class GameActivity extends AppCompatActivity {
 
                 //adding the current player and score to leaderboard
                 Leaderboard lb = Leaderboard.getLeaderboard();
-                lb.add(new LeaderboardEntry(name,score));
+                LeaderboardEntry newEntry = new LeaderboardEntry(name, score);
+                lb.add(newEntry);
             }
         });
 

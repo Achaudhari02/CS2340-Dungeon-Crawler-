@@ -1,4 +1,4 @@
-package com.example.a2340c_team45;
+package com.example.a2340c_team45.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,11 +9,15 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.a2340c_team45.R;
+import com.example.a2340c_team45.viewmodel.Leaderboard;
+
 public class EndActivity extends AppCompatActivity {
     private TextView scoreboard;
     private TextView lbReciever;
 
     private Button restart;
+    private TextView score;
 
 
     @Override
@@ -25,6 +29,8 @@ public class EndActivity extends AppCompatActivity {
         restart = findViewById(R.id.restartButton);
         // creating testView to display leaderboard positions
         lbReciever = findViewById(R.id.leaderboardPOS1);
+
+        score = findViewById(R.id.recentScore);
 
         //creating a listener for restart button
         restart.setOnClickListener(new View.OnClickListener() {
@@ -38,11 +44,17 @@ public class EndActivity extends AppCompatActivity {
         Leaderboard lb = Leaderboard.getLeaderboard();
         lbReciever.setText(lb.toString());
         Log.d("MainActivity", lb.toString());
+        Intent intent = getIntent();
 
-//        ArrayList<LeaderboardEntry> leaderboardText = Leaderboard.getLeaderboard().getArrayList();
+        String newScore = "Current Score: " + intent.getIntExtra("score", 1) +
+                " Name: " + intent.getStringExtra("name") + " Date: " + new java.util.Date();
+        score.setText(newScore);
+
+
+//        ArrayList<LeaderboardEntry> leaderboardText = com.example.a2340c_team45.Leaderboard.getLeaderboard().getArrayList();
 //        int score = getIntent().getIntExtra("score", 0);
 //        String name = getIntent().getStringExtra("name");
-//        Leaderboard t = Leaderboard.getLeaderboard();
+//        com.example.a2340c_team45.Leaderboard t = com.example.a2340c_team45.Leaderboard.getLeaderboard();
 //        t.add(new LeaderboardEntry(name, score));
 //        t.add(new LeaderboardEntry("test", 5)); // entries temporarily added to test functionality
 //        t.add(new LeaderboardEntry("test1", 7));
