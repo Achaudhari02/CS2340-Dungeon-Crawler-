@@ -14,9 +14,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import java.util.ArrayList;
-
-public class InitialActivity extends AppCompatActivity {
+public class InitialActivityView extends AppCompatActivity {
 
     private ImageButton spr1Button;
     private ImageButton spr2Button;
@@ -24,7 +22,7 @@ public class InitialActivity extends AppCompatActivity {
 
     private Button continueToGameButton;
     private String name;
-    private Player player = Player.getPlayer();
+    private PlayerModel playerModel = PlayerModel.getPlayer();
     private Bitmap playerImagePath;
 
     @Override
@@ -81,7 +79,7 @@ public class InitialActivity extends AppCompatActivity {
             } else {
                 difficulty = 3;
             }
-            Intent next = new Intent(getApplicationContext(), GameActivity.class);
+            Intent next = new Intent(getApplicationContext(), GameActivityView.class);
             next.putExtra("diff", difficulty);
             next.putExtra("skin", playerImagePath);
             next.putExtra("name", name);

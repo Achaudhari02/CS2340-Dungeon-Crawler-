@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class EndActivity extends AppCompatActivity {
+public class EndActivityView extends AppCompatActivity {
     private TextView scoreboard;
     private TextView lbReciever;
 
@@ -30,19 +30,19 @@ public class EndActivity extends AppCompatActivity {
         restart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), InitialActivity.class);
+                Intent intent = new Intent(getApplicationContext(), InitialActivityView.class);
                 startActivities(new Intent[]{intent});
             }
         });
 
-        Leaderboard lb = Leaderboard.getLeaderboard();
+        LeaderboardViewModel lb = LeaderboardViewModel.getLeaderboard();
         lbReciever.setText(lb.toString());
         Log.d("MainActivity", lb.toString());
 
-//        ArrayList<LeaderboardEntry> leaderboardText = Leaderboard.getLeaderboard().getArrayList();
+//        ArrayList<LeaderboardEntry> leaderboardText = com.example.a2340c_team45.Leaderboard.getLeaderboard().getArrayList();
 //        int score = getIntent().getIntExtra("score", 0);
 //        String name = getIntent().getStringExtra("name");
-//        Leaderboard t = Leaderboard.getLeaderboard();
+//        com.example.a2340c_team45.Leaderboard t = com.example.a2340c_team45.Leaderboard.getLeaderboard();
 //        t.add(new LeaderboardEntry(name, score));
 //        t.add(new LeaderboardEntry("test", 5)); // entries temporarily added to test functionality
 //        t.add(new LeaderboardEntry("test1", 7));

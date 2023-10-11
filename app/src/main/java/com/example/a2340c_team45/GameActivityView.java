@@ -9,13 +9,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import java.time.Instant;
+
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
+
 import android.os.Handler;
 
-public class GameActivity extends AppCompatActivity {
+public class GameActivityView extends AppCompatActivity {
     private TextView recieverMsgName;
     private TextView recieverMagDiff;
     private TextView startingHp;
@@ -50,7 +50,7 @@ public class GameActivity extends AppCompatActivity {
         running = true;
         doTime();
         //creating leaderboard arraylist
-        ArrayList<LeaderboardEntry> leaderboard = Leaderboard.getLeaderboard().getArrayList();
+        ArrayList<LeaderboardEntryModel> leaderboard = LeaderboardViewModel.getLeaderboard().getArrayList();
 
         ImageView playerSprite = findViewById(R.id.player_sprite_id);
         Bitmap playerImagePath = intent.getParcelableExtra("skin");
@@ -65,14 +65,14 @@ public class GameActivity extends AppCompatActivity {
                 Calendar cl2 = Calendar.getInstance();
                 running = false;
                 score -= time;
-                Intent intent = new Intent(getApplicationContext(), EndActivity.class);
+                Intent intent = new Intent(getApplicationContext(), EndActivityView.class);
                 intent.putExtra("score", score);
                 intent.putExtra("name", name);
                 startActivities(new Intent[]{intent});
 
                 //adding the current player and score to leaderboard
-                Leaderboard lb = Leaderboard.getLeaderboard();
-                lb.add(new LeaderboardEntry(name,score));
+                LeaderboardViewModel lb = LeaderboardViewModel.getLeaderboard();
+                lb.add(new LeaderboardEntryModel(name,score));
             }
         });
 

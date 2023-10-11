@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivityView extends AppCompatActivity {
     private Button strButton;
     private Button extButton;
 
@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         strButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), InitialActivity.class);
+                Intent intent = new Intent(getApplicationContext(), InitialActivityView.class);
                 startActivities(new Intent[]{intent});
             }
         });

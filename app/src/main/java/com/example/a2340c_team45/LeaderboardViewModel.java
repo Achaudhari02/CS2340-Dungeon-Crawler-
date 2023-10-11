@@ -1,25 +1,23 @@
 package com.example.a2340c_team45;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
-public class Leaderboard {
-    private static Leaderboard leaderboard;
-    public ArrayList<LeaderboardEntry> entries = new ArrayList<>(100);
-    private Leaderboard() {
+public class LeaderboardViewModel {
+    private static LeaderboardViewModel leaderboardViewModel;
+    public ArrayList<LeaderboardEntryModel> entries = new ArrayList<>(100);
+    private LeaderboardViewModel() {
 
     }
-    public static Leaderboard getLeaderboard() { //singleton for leaderboard
-        if (leaderboard == null) {
-            leaderboard = new Leaderboard();
+    public static LeaderboardViewModel getLeaderboard() { //singleton for leaderboard
+        if (leaderboardViewModel == null) {
+            leaderboardViewModel = new LeaderboardViewModel();
         }
-        return leaderboard;
+        return leaderboardViewModel;
     }
-    public void setArrayList(ArrayList<LeaderboardEntry> entries) {
+    public void setArrayList(ArrayList<LeaderboardEntryModel> entries) {
         this.entries = entries;
     }
-    public ArrayList<LeaderboardEntry> getArrayList() {
+    public ArrayList<LeaderboardEntryModel> getArrayList() {
         return entries;
     }
     public String toString() { // prints out top 5 scores with name, score, and date
@@ -37,14 +35,14 @@ public class Leaderboard {
         }
         return list;
     }
-    public void add(LeaderboardEntry entry) { // adds the entry and sorts by descending order
+    public void add(LeaderboardEntryModel entry) { // adds the entry and sorts by descending order
         if (entries.size() == 0) {
             entries.add(0, entry);
         } else {
             for (int i = entries.size() - 1; i >= 0; i--) {
                 entries.add(entry);
                 if (entries.get(i).getScore() < entry.getScore()) {
-                    LeaderboardEntry temp = entries.get(i);
+                    LeaderboardEntryModel temp = entries.get(i);
                     entries.set(i, entry);
                     entries.set(i + 1, temp);
                 }
