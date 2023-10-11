@@ -62,4 +62,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/leaderboardTitle" />
+
+    <TextView
+        android:id="@+id/recentScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="177dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="176dp"
+        android:text="TextView"
+        android:textColor="#FF0000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/leaderboardTitle" />
 </androidx.constraintlayout.widget.ConstraintLayout>

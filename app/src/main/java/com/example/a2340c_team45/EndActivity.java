@@ -14,6 +14,7 @@ public class EndActivity extends AppCompatActivity {
     private TextView lbReciever;
 
     private Button restart;
+    private TextView score;
 
 
     @Override
@@ -25,6 +26,8 @@ public class EndActivity extends AppCompatActivity {
         restart = findViewById(R.id.restartButton);
         // creating testView to display leaderboard positions
         lbReciever = findViewById(R.id.leaderboardPOS1);
+
+        score = findViewById(R.id.recentScore);
 
         //creating a listener for restart button
         restart.setOnClickListener(new View.OnClickListener() {
@@ -38,6 +41,12 @@ public class EndActivity extends AppCompatActivity {
         Leaderboard lb = Leaderboard.getLeaderboard();
         lbReciever.setText(lb.toString());
         Log.d("MainActivity", lb.toString());
+        Intent intent = getIntent();
+
+        String newScore = "Current Score: " + intent.getIntExtra("score", 1) +
+                " Name: " + intent.getStringExtra("name") + " Date: " + new java.util.Date();
+        score.setText(newScore);
+
 
 //        ArrayList<LeaderboardEntry> leaderboardText = Leaderboard.getLeaderboard().getArrayList();
 //        int score = getIntent().getIntExtra("score", 0);
