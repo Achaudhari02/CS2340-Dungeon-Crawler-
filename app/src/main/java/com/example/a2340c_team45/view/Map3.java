@@ -1,4 +1,4 @@
-package com.example.a2340c_team45;
+package com.example.a2340c_team45.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,20 +7,23 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Map2 extends AppCompatActivity {
-    private Button map2_next;
+import com.example.a2340c_team45.R;
+
+
+public class Map3 extends AppCompatActivity {
+    private Button map3_next;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.map2);
+        setContentView(R.layout.map3);
 
 
-        map2_next = findViewById(R.id.map2_next);
+        map3_next = findViewById(R.id.map3_next);
 
-        map2_next.setOnClickListener(new View.OnClickListener() {
+        map3_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Map3.class);
+                Intent intent = new Intent(getApplicationContext(), GameActivity.class);
                 startActivity(intent);
             }
         });
