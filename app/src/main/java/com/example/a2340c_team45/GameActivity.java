@@ -57,6 +57,13 @@ public class GameActivity extends AppCompatActivity {
         Bitmap playerImagePath = intent.getParcelableExtra("skin");
         playerSprite.setImageBitmap(playerImagePath);
 
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Map1.class);
+                startActivity(intent);
+            }
+        });
 
         endButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,13 +82,6 @@ public class GameActivity extends AppCompatActivity {
             }
         });
 
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Map1.class);
-                startActivities(new Intent[]{intent});
-            }
-        });
 
         if (diff == 1) {
 
