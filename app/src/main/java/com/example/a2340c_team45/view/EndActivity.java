@@ -46,25 +46,11 @@ public class EndActivity extends AppCompatActivity {
         Log.d("MainActivity", lb.toString());
         Intent intent = getIntent();
 
-        String newScore = "Current Score: " + intent.getIntExtra("score", 1) +
-                " Name: " + intent.getStringExtra("name") + " Date: " + new java.util.Date();
+        String newScore = "Current Score: " + intent.getIntExtra("score", 1)
+                + " Name: " + intent.getStringExtra("name") + " Date: " + new java.util.Date();
         score.setText(newScore);
 
 
-//        ArrayList<LeaderboardEntry> leaderboardText = com.example.a2340c_team45.Leaderboard.getLeaderboard().getArrayList();
-//        int score = getIntent().getIntExtra("score", 0);
-//        String name = getIntent().getStringExtra("name");
-//        com.example.a2340c_team45.Leaderboard t = com.example.a2340c_team45.Leaderboard.getLeaderboard();
-//        t.add(new LeaderboardEntry(name, score));
-//        t.add(new LeaderboardEntry("test", 5)); // entries temporarily added to test functionality
-//        t.add(new LeaderboardEntry("test1", 7));
-//        t.add(new LeaderboardEntry("test2", 8));
-//        t.add(new LeaderboardEntry("test3", 9));
-//        t.add(new LeaderboardEntry("test4", 10));
-
-
-//        scoreboard = findViewById(R.id.scoreboard);
-//        scoreboard.setText(t.toString());
 
     }
 }
