@@ -49,6 +49,5 @@ public class EndActivity extends AppCompatActivity {
         String newScore = "Current Score: " + intent.getIntExtra("score", 1)
                 + " Name: " + intent.getStringExtra("name") + " Date: " + new java.util.Date();
         score.setText(newScore);
-
     }
 }
