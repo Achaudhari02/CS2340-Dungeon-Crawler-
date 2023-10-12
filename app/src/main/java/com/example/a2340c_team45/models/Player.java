@@ -18,7 +18,27 @@ public class Player {
         return player;
     }
 
+    public void setDifficulty(int difficulty) {
+        this.difficulty = difficulty;
+    }
 
+    public int getDifficulty() {
+        return difficulty;
+    }
 
+    public void setHealth(int health) {
+        this.health = health;
+    }
 
+    public int getHealth() {
+        return health;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
 }
