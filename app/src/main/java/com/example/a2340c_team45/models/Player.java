@@ -17,9 +17,6 @@ public class Player {
         }
         return player;
     }
-    public void setDifficulty(int i) {
-        difficulty = i;
-    }
 
     public void setDifficulty(int difficulty) {
         this.difficulty = difficulty;

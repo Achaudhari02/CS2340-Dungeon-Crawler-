@@ -24,4 +24,16 @@ public class PlayerCreateTest {
         assertNotEquals(player, null);
     }
 
+    @Test
+    public void TestName(){
+        Player player = Player.getPlayer();
+        assertEquals(player.getName(),null);
+    }
+
+    @Test
+    public void TestHealth(){
+        Player player = Player.getPlayer();
+        assertEquals(player.getHealth(),0);
+    }
+
 }
