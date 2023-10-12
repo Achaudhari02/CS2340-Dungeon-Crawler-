@@ -7,9 +7,7 @@ import java.util.ArrayList;
 public class Leaderboard {
     private static Leaderboard leaderboard;
     private ArrayList<LeaderboardEntry> entries = new ArrayList<>(100);
-    private Leaderboard() {
-
-    }
+    private Leaderboard() { }
     public static Leaderboard getLeaderboard() { //singleton for leaderboard
         if (leaderboard == null) {
             leaderboard = new Leaderboard();
@@ -22,6 +20,11 @@ public class Leaderboard {
     public ArrayList<LeaderboardEntry> getArrayList() {
         return entries;
     }
+
+    public ArrayList<LeaderboardEntry> getEntries() {
+        return entries;
+    }
+
     public String toString() { // prints out top 5 scores with name, score, and date
         String list = "";
         if (entries.size() >= 5) {

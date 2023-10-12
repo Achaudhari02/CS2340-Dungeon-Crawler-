@@ -7,7 +7,6 @@ import com.example.a2340c_team45.models.Player;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
 
 public class PlayerCreateTest {
     @Test
