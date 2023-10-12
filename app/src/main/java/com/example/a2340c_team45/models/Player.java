@@ -17,6 +17,9 @@ public class Player {
         }
         return player;
     }
+    public void setDifficulty(int i) {
+        difficulty = i;
+    }
 
 
 }
