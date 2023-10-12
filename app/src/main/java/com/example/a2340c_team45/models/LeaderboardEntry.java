@@ -21,4 +21,7 @@ public class LeaderboardEntry { // class for entries being added to leaderboard,
     public String getEntry() {
         return "Name: " + name + "  Score: " + score + "  Date: " + date;
     }
+    public Date getDate() {
+        return date;
+    }
 }
