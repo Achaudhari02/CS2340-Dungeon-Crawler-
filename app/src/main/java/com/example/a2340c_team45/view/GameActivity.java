@@ -113,4 +113,8 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
+    public int getScore() {
+        return score;
+    }
+
 }
