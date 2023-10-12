@@ -11,16 +11,16 @@ import com.example.a2340c_team45.R;
 
 
 public class Map3 extends AppCompatActivity {
-    private Button map3_next;
+    private Button map3Next;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map3);
 
 
-        map3_next = findViewById(R.id.map3_next);
+        map3Next = findViewById(R.id.map3_next);
 
-        map3_next.setOnClickListener(new View.OnClickListener() {
+        map3Next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), GameActivity.class);

@@ -23,7 +23,8 @@ public class GameActivity extends AppCompatActivity {
     private TextView recieverMsgName;
     private TextView recieverMagDiff;
     private TextView startingHp;
-    private Button endButton, nextButton;
+    private Button endButton;
+    private Button nextButton;
     private TextView scoreView;
     private int score = 1000;
     private int time;
