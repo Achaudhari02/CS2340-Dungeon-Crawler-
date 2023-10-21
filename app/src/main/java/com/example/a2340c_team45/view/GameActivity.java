@@ -1,15 +1,18 @@
 package com.example.a2340c_team45.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.KeyEvent;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -35,14 +38,14 @@ public class GameActivity extends AppCompatActivity {
     private boolean running;
     public Player player;
     private float playerX = 0, playerY = 0;
+    RelativeLayout gameLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_activity);
-        //create Player
-        player = player.getPlayer();
-        player.updatePosition(0, 0);
+        gameLayout = findViewById(R.id.gameLayout);
+
 
         // creating textviews for difficulty, hp, name and lel selected
         recieverMsgName = findViewById(R.id.textView2);
@@ -64,10 +67,18 @@ public class GameActivity extends AppCompatActivity {
         doTime();
         //creating leaderboard arraylist
         ArrayList<LeaderboardEntry> leaderboard = Leaderboard.getLeaderboard().getArrayList();
-
-        ImageView playerSprite = findViewById(R.id.player_sprite_id);
         Bitmap playerImagePath = intent.getParcelableExtra("skin");
-        playerSprite.setImageBitmap(playerImagePath);
+        Player.setSprite(playerImagePath);
+        Player.setContext(this);
+        player = player.getPlayer();
+        int screenWidth = getResources().getDisplayMetrics().widthPixels;
+        int screenHeight = getResources().getDisplayMetrics().heightPixels;
+        player.updatePosition(screenWidth, screenHeight);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
+        params.leftMargin = 107;
+//        gameLayout.addView(player, params);
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
