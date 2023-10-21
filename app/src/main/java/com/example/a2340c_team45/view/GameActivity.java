@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.view.KeyEvent;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -18,6 +19,8 @@ import android.os.Handler;
 import com.example.a2340c_team45.models.LeaderboardEntry;
 import com.example.a2340c_team45.R;
 import com.example.a2340c_team45.viewmodel.Leaderboard;
+import com.example.a2340c_team45.models.Player;
+
 
 public class GameActivity extends AppCompatActivity {
     private TextView recieverMsgName;
@@ -30,12 +33,16 @@ public class GameActivity extends AppCompatActivity {
     private int time;
     private String name;
     private boolean running;
+    public Player player;
+    private float playerX = 0, playerY = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_activity);
-
+        //create Player
+        player = player.getPlayer();
+        player.updatePosition(0, 0);
 
         // creating textviews for difficulty, hp, name and lel selected
         recieverMsgName = findViewById(R.id.textView2);
@@ -90,10 +97,8 @@ public class GameActivity extends AppCompatActivity {
 
 
         if (diff == 1) {
-
             startingHp.setText("100");
         } else if (diff == 2) {
-
             startingHp.setText("75");
         } else {
             startingHp.setText("50");
@@ -112,6 +117,26 @@ public class GameActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        switch(keyCode) {
+            case KeyEvent.KEYCODE_DPAD_LEFT:
+                playerX -= 50;
+                break;
+            case KeyEvent.KEYCODE_DPAD_RIGHT:
+                playerX += 50;
+                break;
+            case KeyEvent.KEYCODE_DPAD_UP:
+                playerY += 50;
+                break;
+            case KeyEvent.KEYCODE_DPAD_DOWN:
+                playerY += 50;
+                break;
+        }
+        player.updatePosition(playerX, playerY);
+        return true;
     }
 
     public int getScore() {
