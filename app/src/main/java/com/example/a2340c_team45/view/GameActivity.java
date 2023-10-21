@@ -79,6 +79,7 @@ public class GameActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), EndActivity.class);
                 intent.putExtra("score", score);
                 intent.putExtra("name", name);
+                intent.putExtra("msg", "Congratulations! You won!");
                 startActivities(new Intent[]{intent});
 
                 //adding the current player and score to leaderboard
