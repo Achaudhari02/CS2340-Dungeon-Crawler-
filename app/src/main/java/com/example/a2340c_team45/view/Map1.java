@@ -21,6 +21,7 @@ public class Map1 extends AppCompatActivity {
     private Button map1Next;
     private String name;
     private ImageView playerSprite;
+    private Player player = Player.getPlayer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +34,8 @@ public class Map1 extends AppCompatActivity {
         name = intent.getStringExtra("name");
         Bitmap playerImagePath = intent.getParcelableExtra("skin");
         map1Next = findViewById(R.id.map1_next);
-        playerSprite.findViewById(R.id.player_sprite_id2);
-
+        playerSprite = findViewById(R.id.player_sprite_id2);
+        playerSprite.setImageBitmap(playerImagePath);
         map1Next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -21,6 +21,8 @@ public class Map2 extends AppCompatActivity {
     private Button map2Next;
     private String name;
     private ImageView playerSprite;
+    private Player player = Player.getPlayer();
+    private Bitmap playerImagePath;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +34,9 @@ public class Map2 extends AppCompatActivity {
         Intent intent = getIntent();
         name = intent.getStringExtra("name");
         Bitmap playerImagePath = intent.getParcelableExtra("skin");
-        playerSprite.findViewById(R.id.player_sprite_id3);
+        playerSprite = findViewById(R.id.player_sprite_id3);
+        playerSprite.setImageBitmap(playerImagePath);
+
         map2Next = findViewById(R.id.map2_next);
 
         map2Next.setOnClickListener(new View.OnClickListener() {
