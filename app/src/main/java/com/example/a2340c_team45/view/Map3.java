@@ -44,10 +44,11 @@ public class Map3 extends AppCompatActivity {
         map3Next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+                Intent intent = new Intent(getApplicationContext(), EndActivity.class);
                 intent.putExtra("diff", diffStr);
                 intent.putExtra("skin", playerImagePath);
                 intent.putExtra("name", name);
+                intent.putExtra("msg", "Congratulations! You won!");
                 startActivity(intent);
             }
         });
@@ -71,7 +72,7 @@ public class Map3 extends AppCompatActivity {
             default:
                 return super.onKeyDown(keyCode, event);
         }
-        player.move();
+        player.notifySubscribers();
         playerSprite.setX(player.getX());
         playerSprite.setY(player.getY());
         return true;

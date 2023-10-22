@@ -71,7 +71,7 @@ public class Map2 extends AppCompatActivity {
             default:
                 return super.onKeyDown(keyCode, event);
         }
-        player.move();
+        player.notifySubscribers();
         playerSprite.setX(player.getX());
         playerSprite.setY(player.getY());
         return true;
