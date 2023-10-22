@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     android:background="@drawable/map1">
 
+    <ImageView
+        android:id="@+id/player_sprite_id2"
+        android:layout_width="38dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="136dp"
+        android:scaleX="2"
+        android:scaleY="2"
+        app:layout_constraintEnd_toStartOf="@+id/endButton"
+        app:layout_constraintTop_toTopOf="@+id/textView2"
+        app:srcCompat="@drawable/angel_idle_anim_f0" />
+
     <Button
         android:id="@+id/map1_next"
         android:layout_width="wrap_content"
