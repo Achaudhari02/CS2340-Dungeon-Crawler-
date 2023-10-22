@@ -1,29 +1,28 @@
 package com.example.a2340c_team45.view;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.KeyEvent;
-import android.widget.RelativeLayout;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 
 import android.os.Handler;
-
+import com.example.a2340c_team45.Strategy.moveUp;
+import com.example.a2340c_team45.Strategy.moveDown;
+import com.example.a2340c_team45.Strategy.moveRight;
+import com.example.a2340c_team45.Strategy.moveLeft;
 import com.example.a2340c_team45.models.LeaderboardEntry;
 import com.example.a2340c_team45.R;
-import com.example.a2340c_team45.viewmodel.Leaderboard;
 import com.example.a2340c_team45.models.Player;
-
+import com.example.a2340c_team45.viewmodel.Leaderboard;
 
 public class GameActivity extends AppCompatActivity {
     private TextView recieverMsgName;
@@ -36,15 +35,12 @@ public class GameActivity extends AppCompatActivity {
     private int time;
     private String name;
     private boolean running;
-    public Player player;
-    private float playerX = 0, playerY = 0;
-    RelativeLayout gameLayout;
+    private ImageView playerSprite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_activity);
-        gameLayout = findViewById(R.id.gameLayout);
 
 
         // creating textviews for difficulty, hp, name and lel selected
@@ -67,18 +63,16 @@ public class GameActivity extends AppCompatActivity {
         doTime();
         //creating leaderboard arraylist
         ArrayList<LeaderboardEntry> leaderboard = Leaderboard.getLeaderboard().getArrayList();
+
+        playerSprite = findViewById(R.id.player_sprite_id);
         Bitmap playerImagePath = intent.getParcelableExtra("skin");
-        Player.setSprite(playerImagePath);
-        Player.setContext(this);
-        player = player.getPlayer();
-        int screenWidth = getResources().getDisplayMetrics().widthPixels;
-        int screenHeight = getResources().getDisplayMetrics().heightPixels;
-        player.updatePosition(screenWidth, screenHeight);
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        params.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
-        params.leftMargin = 107;
-//        gameLayout.addView(player, params);
+        playerSprite.setImageBitmap(playerImagePath);
+
+
+        //player sprite movement
+
+
+
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,6 +91,7 @@ public class GameActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), EndActivity.class);
                 intent.putExtra("score", score);
                 intent.putExtra("name", name);
+                intent.putExtra("msg", "Congratulations! You won!");
                 startActivities(new Intent[]{intent});
 
                 //adding the current player and score to leaderboard
@@ -108,8 +103,10 @@ public class GameActivity extends AppCompatActivity {
 
 
         if (diff == 1) {
+
             startingHp.setText("100");
         } else if (diff == 2) {
+
             startingHp.setText("75");
         } else {
             startingHp.setText("50");
@@ -129,24 +126,29 @@ public class GameActivity extends AppCompatActivity {
         });
 
     }
+    // player movement
 
-    @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        switch(keyCode) {
-            case KeyEvent.KEYCODE_DPAD_LEFT:
-                playerX -= 50;
-                break;
-            case KeyEvent.KEYCODE_DPAD_RIGHT:
-                playerX += 50;
-                break;
+        Player player = Player.getPlayer();
+        switch (keyCode) {
             case KeyEvent.KEYCODE_DPAD_UP:
-                playerY += 50;
+                player.setMovementStrat(new moveUp());
                 break;
             case KeyEvent.KEYCODE_DPAD_DOWN:
-                playerY += 50;
+                player.setMovementStrat(new moveDown());
                 break;
+            case KeyEvent.KEYCODE_DPAD_RIGHT:
+                player.setMovementStrat(new moveRight());
+                break;
+            case KeyEvent.KEYCODE_DPAD_LEFT:
+                player.setMovementStrat(new moveLeft());
+                break;
+            default:
+                return super.onKeyDown(keyCode, event);
         }
-        player.updatePosition(playerX, playerY);
+        player.move();
+        playerSprite.setX(player.getX());
+        playerSprite.setY(player.getY());
         return true;
     }
 

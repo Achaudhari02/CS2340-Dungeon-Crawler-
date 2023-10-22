@@ -2,6 +2,7 @@ package com.example.a2340c_team45.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +19,7 @@ public class EndActivity extends AppCompatActivity {
 
     private Button restart;
     private TextView score;
+    private TextView congrat;
 
 
     @Override
@@ -31,6 +33,7 @@ public class EndActivity extends AppCompatActivity {
         lbReciever = findViewById(R.id.leaderboardPOS1);
 
         score = findViewById(R.id.recentScore);
+        congrat = findViewById(R.id.congrat);
 
         //creating a listener for restart button
         restart.setOnClickListener(new View.OnClickListener() {
@@ -45,9 +48,11 @@ public class EndActivity extends AppCompatActivity {
         lbReciever.setText(lb.toString());
         Log.d("MainActivity", lb.toString());
         Intent intent = getIntent();
+        String congrats = intent.getStringExtra("msg");
 
         String newScore = "Current Score: " + intent.getIntExtra("score", 1)
                 + " Name: " + intent.getStringExtra("name") + " Date: " + new java.util.Date();
         score.setText(newScore);
+        congrat.setText(congrats);
     }
 }
