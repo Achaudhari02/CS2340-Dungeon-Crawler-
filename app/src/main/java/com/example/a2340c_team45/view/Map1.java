@@ -36,6 +36,8 @@ public class Map1 extends AppCompatActivity {
         map1Next = findViewById(R.id.map1_next);
         playerSprite = findViewById(R.id.player_sprite_id2);
         playerSprite.setImageBitmap(playerImagePath);
+        player.setX(0);
+        player.setY(0);
         map1Next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

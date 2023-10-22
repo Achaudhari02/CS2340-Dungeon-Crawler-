@@ -2,9 +2,10 @@ package com.example.a2340c_team45.models;
 
 import android.graphics.Bitmap;
 
+import com.example.a2340c_team45.Observer.Subscriber;
 import com.example.a2340c_team45.Strategy.MovementStrat;
 
-public class Player {
+public class Player implements Subscriber {
     private int health;
     private String name;
     private int difficulty;
@@ -65,5 +66,9 @@ public class Player {
     }
     public int getY() {
         return y;
+    }
+    public void update(Player player) {
+        player.setX(x);
+        player.setY(y);
     }
 }

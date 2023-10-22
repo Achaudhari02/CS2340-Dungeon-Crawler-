@@ -152,6 +152,7 @@ public class GameActivity extends AppCompatActivity {
         player.move();
         playerSprite.setX(player.getX());
         playerSprite.setY(player.getY());
+        player.update(player);
         return true;
     }
 

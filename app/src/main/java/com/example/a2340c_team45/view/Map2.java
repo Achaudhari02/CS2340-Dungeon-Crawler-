@@ -36,6 +36,8 @@ public class Map2 extends AppCompatActivity {
         Bitmap playerImagePath = intent.getParcelableExtra("skin");
         playerSprite = findViewById(R.id.player_sprite_id3);
         playerSprite.setImageBitmap(playerImagePath);
+        player.setX(0);
+        player.setY(0);
 
         map2Next = findViewById(R.id.map2_next);
 
