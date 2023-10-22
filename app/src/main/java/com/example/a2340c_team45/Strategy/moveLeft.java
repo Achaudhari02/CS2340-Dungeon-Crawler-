@@ -4,7 +4,7 @@ import com.example.a2340c_team45.models.Player;
 
 public class moveLeft implements MovementStrat {
     public void move(Player player) {
-        if (ableMove(player)) {
+        if (ableMove(player) & (player.getX() > 0)) {
             player.setX(player.getX() - 10);
         }
     }
