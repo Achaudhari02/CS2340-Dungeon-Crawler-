@@ -4,7 +4,7 @@ import com.example.a2340c_team45.models.Player;
 
 public class moveDown implements MovementStrat {
     public void move(Player player) {
-        if (ableMove(player)) {
+        if (ableMove(player) & (player.getY() < 1800)) {
             player.setY(player.getY() + 10);
         }
     }
