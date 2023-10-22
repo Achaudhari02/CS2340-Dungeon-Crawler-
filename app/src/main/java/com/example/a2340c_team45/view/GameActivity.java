@@ -78,6 +78,9 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Map1.class);
+                intent.putExtra("diff", diffStr);
+                intent.putExtra("skin", playerImagePath);
+                intent.putExtra("name", name);
                 startActivity(intent);
             }
         });
