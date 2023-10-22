@@ -2,7 +2,11 @@ package com.example.a2340c_team45.models;
 
 import android.graphics.Bitmap;
 
+import com.example.a2340c_team45.Observer.Subscriber;
 import com.example.a2340c_team45.Strategy.MovementStrat;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Player {
     private int health;
@@ -13,6 +17,7 @@ public class Player {
     private int x;
     private int y;
     private MovementStrat movementStrat;
+    private List<Subscriber> subscribers = new ArrayList<>();
     private Player() {
 
     }
@@ -21,6 +26,14 @@ public class Player {
             player = new Player();
         }
         return player;
+    }
+    public void subscribe(Subscriber subscriber) {
+        subscribers.add(subscriber);
+    }
+    public void notifySubscribers() {
+        for (Subscriber subscriber: subscribers) {
+            subscriber.update(this);
+        }
     }
     public void setMovementStrat(MovementStrat movementStrat) {
         this.movementStrat = movementStrat;

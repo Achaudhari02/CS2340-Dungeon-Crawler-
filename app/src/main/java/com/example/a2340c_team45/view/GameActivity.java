@@ -15,6 +15,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import android.os.Handler;
+
+import com.example.a2340c_team45.Observer.Subscriber;
+import com.example.a2340c_team45.Strategy.MovementStrat;
 import com.example.a2340c_team45.Strategy.moveUp;
 import com.example.a2340c_team45.Strategy.moveDown;
 import com.example.a2340c_team45.Strategy.moveRight;
@@ -67,6 +70,14 @@ public class GameActivity extends AppCompatActivity {
         playerSprite = findViewById(R.id.player_sprite_id);
         Bitmap playerImagePath = intent.getParcelableExtra("skin");
         playerSprite.setImageBitmap(playerImagePath);
+        Player player = Player.getPlayer();
+        player.subscribe(new moveDown());
+        player.subscribe(new moveUp());
+        player.subscribe(new moveLeft());
+        player.subscribe(new moveRight());
+        player.setX(0);
+        player.setY(0);
+
 
 
         //player sprite movement
@@ -149,7 +160,7 @@ public class GameActivity extends AppCompatActivity {
             default:
                 return super.onKeyDown(keyCode, event);
         }
-        player.move();
+        player.notifySubscribers();
         playerSprite.setX(player.getX());
         playerSprite.setY(player.getY());
         return true;
