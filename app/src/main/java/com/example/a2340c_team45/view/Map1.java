@@ -11,10 +11,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.a2340c_team45.R;
-import com.example.a2340c_team45.Strategy.moveDown;
+import com.example.a2340c_team45.Strategy.MoveDown;
 import com.example.a2340c_team45.Strategy.MoveLeft;
 import com.example.a2340c_team45.Strategy.MoveRight;
-import com.example.a2340c_team45.Strategy.moveUp;
+import com.example.a2340c_team45.Strategy.MoveUp;
 import com.example.a2340c_team45.models.Player;
 import com.example.a2340c_team45.viewmodel.Leaderboard;
 
@@ -47,10 +47,10 @@ public class Map1 extends AppCompatActivity {
         Player player = Player.getPlayer();
         switch (keyCode) {
         case KeyEvent.KEYCODE_DPAD_UP:
-            player.setMovementStrat(new moveUp());
+            player.setMovementStrat(new MoveUp());
             break;
         case KeyEvent.KEYCODE_DPAD_DOWN:
-            player.setMovementStrat(new moveDown());
+            player.setMovementStrat(new MoveDown());
             break;
         case KeyEvent.KEYCODE_DPAD_RIGHT:
             player.setMovementStrat(new MoveRight());

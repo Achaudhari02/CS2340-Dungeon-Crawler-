@@ -7,8 +7,8 @@ public class CheckCollision implements CollisionStrat {
     @Override
     public boolean isColliding(Player obj1, RectangleWallView obj2) {
         return obj1.getX() < obj2.getX() + obj2.getWallWidth()
-                && obj1.getX() + 25 > obj2.GetX()
+                && obj1.getX() + 25 > obj2.getX()
                 && obj1.getY() < obj2.getY() + obj2.getWallHeigth()
-                && obj1.getY() + 25 > obj2.GetY();
+                && obj1.getY() + 25 > obj2.getY();
     }
 }

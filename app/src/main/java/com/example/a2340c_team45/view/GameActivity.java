@@ -12,8 +12,8 @@ import java.util.ArrayList;
 
 import android.os.Handler;
 
-import com.example.a2340c_team45.Strategy.moveUp;
-import com.example.a2340c_team45.Strategy.moveDown;
+import com.example.a2340c_team45.Strategy.MoveUp;
+import com.example.a2340c_team45.Strategy.MoveDown;
 import com.example.a2340c_team45.Strategy.MoveRight;
 import com.example.a2340c_team45.Strategy.MoveLeft;
 import com.example.a2340c_team45.models.LeaderboardEntry;
@@ -61,8 +61,8 @@ public class GameActivity extends AppCompatActivity {
         playerImagePath = intent.getParcelableExtra("skin");
         playerSprite.setImageBitmap(playerImagePath);
         Player player = Player.getPlayer();
-        player.subscribe(new moveDown());
-        player.subscribe(new moveUp());
+        player.subscribe(new MoveDown());
+        player.subscribe(new MoveUp());
         player.subscribe(new MoveLeft());
         player.subscribe(new MoveRight());
         player.setX(0);
@@ -105,10 +105,10 @@ public class GameActivity extends AppCompatActivity {
         Player player = Player.getPlayer();
         switch (keyCode) {
         case KeyEvent.KEYCODE_DPAD_UP:
-            player.setMovementStrat(new moveUp());
+            player.setMovementStrat(new MoveUp());
             break;
         case KeyEvent.KEYCODE_DPAD_DOWN:
-            player.setMovementStrat(new moveDown());
+            player.setMovementStrat(new MoveDown());
             break;
         case KeyEvent.KEYCODE_DPAD_RIGHT:
             player.setMovementStrat(new MoveRight());
