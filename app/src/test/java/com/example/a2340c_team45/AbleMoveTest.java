@@ -3,7 +3,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 import com.example.a2340c_team45.Strategy.MoveLeft;
-import com.example.a2340c_team45.Strategy.moveUp;
+import com.example.a2340c_team45.Strategy.MoveUp;
 import com.example.a2340c_team45.models.Player;
 
 public class AbleMoveTest {
@@ -21,10 +21,10 @@ public class AbleMoveTest {
     @Test
     public void testTop() {
         Player player = Player.getPlayer();
-        moveUp mu = new moveUp();
+        MoveUp mu = new MoveUp();
         player.setX(0);
         player.setY(-1);
-        player.setMovementStrat(new moveUp());
+        player.setMovementStrat(new MoveUp());
         player.move();
         assertEquals(mu.ableMove(player), false);
     }
