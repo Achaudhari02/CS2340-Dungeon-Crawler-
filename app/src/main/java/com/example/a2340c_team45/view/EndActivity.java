@@ -50,7 +50,7 @@ public class EndActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String congrats = intent.getStringExtra("msg");
 
-        String newScore = "Current Score: " + intent.getIntExtra("score", 1)
+        String newScore = "Current Score: " + Leaderboard.getScore()
                 + " Name: " + intent.getStringExtra("name") + " Date: " + new java.util.Date();
         score.setText(newScore);
         congrat.setText(congrats);

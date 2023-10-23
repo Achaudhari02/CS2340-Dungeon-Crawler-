@@ -18,6 +18,7 @@ public class Player {
     private int y;
     private MovementStrat movementStrat;
     private List<Subscriber> subscribers = new ArrayList<>();
+    private static String location;
     private Player() {
 
     }
@@ -78,5 +79,11 @@ public class Player {
     }
     public int getY() {
         return y;
+    }
+    public static String getLocation() {
+        return location;
+    }
+    public static void setLocation(String lc) {
+        location = lc;
     }
 }

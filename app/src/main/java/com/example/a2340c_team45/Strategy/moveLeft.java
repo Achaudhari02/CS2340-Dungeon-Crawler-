@@ -8,6 +8,7 @@ public class moveLeft implements MovementStrat, Subscriber {
         if (ableMove(player) & (player.getX() > 0)) {
             player.setX(player.getX() - 10);
         }
+
     }
     public boolean ableMove(Player player) {
         return true;
