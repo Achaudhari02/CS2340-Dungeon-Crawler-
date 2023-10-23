@@ -10,7 +10,7 @@ public class Leaderboard {
     private static Leaderboard leaderboard;
     private ArrayList<LeaderboardEntry> entries = new ArrayList<>(100);
     private static int score = 1000;
-    public static boolean running;
+    private static boolean running;
     private static int time;
     private Leaderboard() { }
     public static Leaderboard getLeaderboard() { //singleton for leaderboard

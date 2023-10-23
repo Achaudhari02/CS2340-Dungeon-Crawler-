@@ -3,22 +3,20 @@ package com.example.a2340c_team45.Strategy;
 import com.example.a2340c_team45.Observer.Subscriber;
 import com.example.a2340c_team45.models.Player;
 
-public class moveLeft implements MovementStrat, Subscriber {
+public class MoveDown implements MovementStrat, Subscriber {
     public void move(Player player) {
         if (ableMove(player)) {
-            player.setX(player.getX() - 10);
+            player.setY(player.getY() + 10);
         }
-
     }
     public boolean ableMove(Player player) {
 
-        if(player.getX() < 0){
+        if (player.getY() > 1800) {
             return false;
         }
         return true;
     }
 
-    @Override
     public void update(Player player) {
         player.move();
     }
