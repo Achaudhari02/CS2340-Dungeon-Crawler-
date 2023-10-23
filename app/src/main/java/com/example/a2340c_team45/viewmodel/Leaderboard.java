@@ -1,5 +1,7 @@
 package com.example.a2340c_team45.viewmodel;
 
+import android.os.Handler;
+
 import com.example.a2340c_team45.models.LeaderboardEntry;
 
 import java.util.ArrayList;
@@ -7,10 +9,15 @@ import java.util.ArrayList;
 public class Leaderboard {
     private static Leaderboard leaderboard;
     private ArrayList<LeaderboardEntry> entries = new ArrayList<>(100);
+    private static int score = 1000;
+    public static boolean running;
+    private static int time;
     private Leaderboard() { }
     public static Leaderboard getLeaderboard() { //singleton for leaderboard
         if (leaderboard == null) {
             leaderboard = new Leaderboard();
+            leaderboard.running = true;
+            doTime();
         }
         return leaderboard;
     }
@@ -53,6 +60,23 @@ public class Leaderboard {
                 }
             }
         }
+
+    }
+
+    public static int getScore() {
+        return score - time;
+    }
+
+    private static void doTime() {
+        final Handler handler = new Handler();
+        handler.post(new Runnable() {
+            public void run() {
+                if (running) {
+                    time++;
+                }
+                handler.postDelayed(this, 1000);
+            }
+        });
 
     }
 }

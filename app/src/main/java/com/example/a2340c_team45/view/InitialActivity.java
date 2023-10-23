@@ -25,7 +25,6 @@ public class InitialActivity extends AppCompatActivity {
 
     private Button continueToGameButton;
     private String name;
-    private Player player = Player.getPlayer();
     private Bitmap playerImagePath;
 
     @Override
@@ -64,7 +63,7 @@ public class InitialActivity extends AppCompatActivity {
             int selectedId = difficultySelection.getCheckedRadioButtonId();
             name = ((EditText) findViewById(R.id.name)).getText().toString();
             System.out.println(name);
-
+            Player.setLocation("GameActivity");
             RadioButton radioButton = (RadioButton) findViewById(selectedId);
 
             int difficulty = 1;
@@ -82,7 +81,7 @@ public class InitialActivity extends AppCompatActivity {
             next.putExtra("diff", difficulty);
             next.putExtra("skin", playerImagePath);
             next.putExtra("name", name);
-            if (name != null) {
+            if (name != null && playerImagePath != null) {
                 for (int i = 0; i < name.length(); i++) {
                     if (!(name.substring(i, i + 1).equals(" "))) {
                         startActivity(next);
