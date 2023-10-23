@@ -5,11 +5,15 @@ import com.example.a2340c_team45.models.Player;
 
 public class moveRight implements MovementStrat, Subscriber {
     public void move(Player player) {
-        if (ableMove(player) & (player.getX() < 1000)) {
+        if (ableMove(player)) {
             player.setX(player.getX() + 10);
         }
     }
     public boolean ableMove(Player player) {
+        if(player.getX() > 1000){
+
+            return false;
+        }
         return true;
     }
     public void update(Player player) {
