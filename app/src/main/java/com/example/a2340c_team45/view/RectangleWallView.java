@@ -10,10 +10,6 @@ public class RectangleWallView extends View {
     private Paint wallPaint;
     private int wallWidth;
     private int wallHeigth;
-
-    private int x;
-    private int y;
-
     public RectangleWallView(Context context) {
         super(context);
 
@@ -55,16 +51,6 @@ public class RectangleWallView extends View {
 
     public void setWallWidth(int wallWidth) {
         this.wallWidth = wallWidth;
-    }
-
-
-    public int GetX() {
-        return x;
-    }
-
-    public int GetY(){
-
-        return y;
     }
 
 }

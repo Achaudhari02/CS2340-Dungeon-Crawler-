@@ -3,8 +3,6 @@ package com.example.a2340c_team45;
 import static org.junit.Assert.assertEquals;
 
 import com.example.a2340c_team45.Strategy.moveDown;
-import com.example.a2340c_team45.Strategy.moveLeft;
-import com.example.a2340c_team45.Strategy.moveRight;
 import com.example.a2340c_team45.Strategy.moveUp;
 import com.example.a2340c_team45.models.Player;
 
