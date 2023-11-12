@@ -5,20 +5,21 @@ import com.example.a2340c_team45.models.Enemy;
 import com.example.a2340c_team45.models.Player;
 
 public class MoveLeftRight implements EnemySubscriber, EnemyMovementStrat {
+    int direction = 1;
+    boolean movingLeft = true;
     public void move(Enemy enemy) {
-        if (ableMove(enemy)) {
-            enemy.setX(enemy.getX() - enemy.getSpeed()); // move left
-        } else {
-            enemy.setX(enemy.getX() + enemy.getSpeed()); //move right
-        }
-
+        checkDirection(enemy);
+        enemy.setX(enemy.getX() - enemy.getSpeed() * direction); // move left
     }
-    public boolean ableMove(Enemy enemy) {
-
-        if (enemy.getX() < 0) {
-            return false;
+    public void checkDirection(Enemy enemy) {
+        if (enemy.getX() < 0 && movingLeft) {
+            direction = -1;
+            movingLeft = false;
         }
-        return true;
+        if (enemy.getX() > 1000) {
+            direction = 1;
+            movingLeft = true;
+        }
     }
     public boolean ableMoveRight(Enemy enemy) {
         if (enemy.getX() > 1000) {

@@ -84,11 +84,6 @@ public class GameActivity extends AppCompatActivity {
 
         //Initialize Enemies
         enemies = initializeEnemies();
-        enemySprites = new ImageView[4];
-        enemySprites[0] = findViewById(R.id.enemy1);
-        enemySprites[1] = findViewById(R.id.enemy2);
-        enemySprites[2] = findViewById(R.id.enemy3);
-        enemySprites[3] = findViewById(R.id.enemy4);
 
         enemyMovement();
 
@@ -182,9 +177,19 @@ public class GameActivity extends AppCompatActivity {
         enemyArray[3] = enemyFactory.getEnemy("enemy2");
 
         enemyArray[0].setMovementStrat(new MoveLeftRight());
-        enemyArray[1].setMovementStrat(new MoveLeftRight());
-        enemyArray[2].setMovementStrat(new MoveUpDown());
+        enemyArray[1].setMovementStrat(new MoveUpDown());
+        enemyArray[2].setMovementStrat(new MoveLeftRight());
         enemyArray[3].setMovementStrat(new MoveUpDown());
+
+        enemySprites = new ImageView[4];
+        enemySprites[0] = findViewById(R.id.enemy1);
+        enemySprites[1] = findViewById(R.id.enemy2);
+        enemySprites[2] = findViewById(R.id.enemy3);
+        enemySprites[3] = findViewById(R.id.enemy4);
+        for (int i = 0; i < enemySprites.length; i++) {
+            enemySprites[i].setX(100);
+            enemySprites[i].setY(100);
+        }
 
         return enemyArray;
     }
@@ -196,7 +201,8 @@ public class GameActivity extends AppCompatActivity {
                 for (int i = 0; i < enemies.length; i++) {
                     enemies[i].move();
                     enemySprites[i].setX(enemies[i].getX());
-                    enemySprites[i].setX(enemies[i].getY());
+                    enemySprites[i].setY(enemies[i].getY());
+//                    System.out.println("Enemy X, Y")
                 }
                 handler.postDelayed(this, 100);
             }

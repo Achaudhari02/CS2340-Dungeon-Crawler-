@@ -117,33 +117,43 @@
       android:id="@+id/enemy1"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      app:srcCompat="@drawable/angel_idle_anim_f0"
-      tools:layout_editor_absoluteX="88dp"
-      tools:layout_editor_absoluteY="291dp" />
+      android:layout_marginStart="80dp"
+      android:layout_marginTop="157dp"
+      app:layout_constraintStart_toStartOf="@+id/imageView"
+      app:layout_constraintTop_toTopOf="@+id/imageView"
+      app:srcCompat="@drawable/angel_idle_anim_f0" />
 
   <ImageView
       android:id="@+id/enemy2"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      app:srcCompat="@drawable/angel_idle_anim_f0"
-      tools:layout_editor_absoluteX="142dp"
-      tools:layout_editor_absoluteY="291dp" />
+      android:layout_marginTop="157dp"
+      android:layout_marginEnd="261dp"
+      app:layout_constraintEnd_toEndOf="@+id/imageView"
+      app:layout_constraintTop_toTopOf="@+id/imageView"
+      app:srcCompat="@drawable/angel_idle_anim_f0" />
 
   <ImageView
       android:id="@+id/enemy3"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      app:srcCompat="@drawable/angel_idle_anim_f0"
-      tools:layout_editor_absoluteX="178dp"
-      tools:layout_editor_absoluteY="291dp" />
+      android:layout_marginStart="167dp"
+      android:layout_marginTop="80dp"
+      app:layout_constraintStart_toStartOf="@+id/imageView"
+      app:layout_constraintTop_toTopOf="@+id/imageView"
+      app:srcCompat="@drawable/angel_idle_anim_f0" />
 
   <ImageView
       android:id="@+id/enemy4"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      app:srcCompat="@drawable/angel_idle_anim_f0"
-      tools:layout_editor_absoluteX="213dp"
-      tools:layout_editor_absoluteY="291dp" />
+      android:layout_marginStart="255dp"
+      android:layout_marginEnd="140dp"
+      android:layout_marginBottom="4dp"
+      app:layout_constraintBottom_toTopOf="@+id/imageView"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:srcCompat="@drawable/angel_idle_anim_f0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
