@@ -85,7 +85,13 @@ public class Map1 extends AppCompatActivity {
         intent.putExtra("diff", diffStr);
         intent.putExtra("skin", playerImagePath);
         intent.putExtra("name", name);
-        Player.setLocation("Map2");
+        if (player.getHealth() <= 0) {
+            Player.setLocation("EndActivity");
+            intent.putExtra("msg2", "Game Over :(");
+        } else {
+            Player.setLocation("Map2");
+        }
+
         startActivity(intent);
     }
 
