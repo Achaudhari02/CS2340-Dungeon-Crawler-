@@ -86,4 +86,25 @@ public class Player {
     public static void setLocation(String lc) {
         location = lc;
     }
+
+    public void decreaseHealth(int damage) {
+        this.health -= damage;
+        if (this.health < 0) {
+            this.health = 0;
+        }
+    }
+
+    public void checkCollAndHP(Player player, List<Enemy> enemies) {
+        for (Enemy enemy : enemies) {
+            if (isColliding(player, enemy)) {
+                player.decreaseHealth(enemy.getStrength());
+            }
+        }
+    }
+
+    private boolean isColliding(Player player, Enemy enemy) {
+        return Math.abs(player.getX() - enemy.getX()) < 25
+                || Math.abs(player.getY() - enemy.getY()) < 25;
+    }
 }
+
