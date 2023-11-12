@@ -103,15 +103,15 @@ public class Map1 extends AppCompatActivity {
         EnemyFactory enemyFactory = new EnemyFactory();
         Enemy[] enemyArray = new Enemy[4];
 
-        enemyArray[0] = enemyFactory.getEnemy("enemy1");
-        enemyArray[1] = enemyFactory.getEnemy("enemy1");
-        enemyArray[2] = enemyFactory.getEnemy("enemy2");
-        enemyArray[3] = enemyFactory.getEnemy("enemy2");
+        enemyArray[0] = enemyFactory.getEnemy("enemy2");
+        enemyArray[1] = enemyFactory.getEnemy("enemy2");
+        enemyArray[2] = enemyFactory.getEnemy("enemy3");
+        enemyArray[3] = enemyFactory.getEnemy("enemy3");
 
-        enemyArray[0].setMovementStrat(new MoveLeftRight());
+        enemyArray[0].setMovementStrat(new MoveUpDown());
         enemyArray[1].setMovementStrat(new MoveUpDown());
         enemyArray[2].setMovementStrat(new MoveLeftRight());
-        enemyArray[3].setMovementStrat(new MoveUpDown());
+        enemyArray[3].setMovementStrat(new MoveLeftRight());
 
         enemySprites = new ImageView[4];
         enemySprites[0] = findViewById(R.id.enemy1);

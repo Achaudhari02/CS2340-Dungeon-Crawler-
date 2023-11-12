@@ -100,9 +100,9 @@ public class Map3 extends AppCompatActivity {
         Enemy[] enemyArray = new Enemy[4];
 
         enemyArray[0] = enemyFactory.getEnemy("enemy1");
-        enemyArray[1] = enemyFactory.getEnemy("enemy1");
-        enemyArray[2] = enemyFactory.getEnemy("enemy2");
-        enemyArray[3] = enemyFactory.getEnemy("enemy2");
+        enemyArray[1] = enemyFactory.getEnemy("enemy2");
+        enemyArray[2] = enemyFactory.getEnemy("enemy3");
+        enemyArray[3] = enemyFactory.getEnemy("enemy4");
 
         enemyArray[0].setMovementStrat(new MoveLeftRight());
         enemyArray[1].setMovementStrat(new MoveUpDown());
