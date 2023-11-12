@@ -38,5 +38,37 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/button_blue_up" />
 
+    <ImageView
+        android:id="@+id/enemy1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/big_zombie_idle_anim_f0"
+        tools:layout_editor_absoluteX="47dp"
+        tools:layout_editor_absoluteY="80dp" />
+
+    <ImageView
+        android:id="@+id/enemy2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/big_zombie_idle_anim_f0"
+        tools:layout_editor_absoluteX="112dp"
+        tools:layout_editor_absoluteY="102dp" />
+
+    <ImageView
+        android:id="@+id/enemy3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/chort_idle_anim_f0"
+        tools:layout_editor_absoluteX="203dp"
+        tools:layout_editor_absoluteY="64dp" />
+
+    <ImageView
+        android:id="@+id/enemy4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/chort_idle_anim_f0"
+        tools:layout_editor_absoluteX="241dp"
+        tools:layout_editor_absoluteY="146dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

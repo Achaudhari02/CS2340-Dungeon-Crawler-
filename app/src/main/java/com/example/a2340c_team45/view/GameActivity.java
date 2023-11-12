@@ -42,7 +42,6 @@ public class GameActivity extends AppCompatActivity {
     private Bitmap playerImagePath;
 
     //Enemy ImageViews
-    Enemy baseEnemy;
     Enemy[] enemies;
     private ImageView[] enemySprites;
 

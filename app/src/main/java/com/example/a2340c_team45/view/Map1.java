@@ -13,8 +13,12 @@ import android.widget.TextView;
 import com.example.a2340c_team45.R;
 import com.example.a2340c_team45.Strategy.MoveDown;
 import com.example.a2340c_team45.Strategy.MoveLeft;
+import com.example.a2340c_team45.Strategy.MoveLeftRight;
 import com.example.a2340c_team45.Strategy.MoveRight;
 import com.example.a2340c_team45.Strategy.MoveUp;
+import com.example.a2340c_team45.Strategy.MoveUpDown;
+import com.example.a2340c_team45.models.Enemy;
+import com.example.a2340c_team45.models.EnemyFactory;
 import com.example.a2340c_team45.models.Player;
 import com.example.a2340c_team45.viewmodel.Leaderboard;
 
@@ -25,6 +29,9 @@ public class Map1 extends AppCompatActivity {
     private Bitmap playerImagePath;
     private String diffStr;
     private TextView scoreView;
+
+    Enemy[] enemies;
+    private ImageView[] enemySprites;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +49,8 @@ public class Map1 extends AppCompatActivity {
         player.setX(0);
         player.setY(0);
         updateScore();
+        enemies = initializeEnemies();
+        startEnemyMovement();
     }
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         Player player = Player.getPlayer();
@@ -86,6 +95,52 @@ public class Map1 extends AppCompatActivity {
             public void run() {
                 scoreView.setText("Score:" + Leaderboard.getScore());
                 handler.postDelayed(this, 1000);
+            }
+        });
+    }
+
+    private Enemy[] initializeEnemies() {
+        EnemyFactory enemyFactory = new EnemyFactory();
+        Enemy[] enemyArray = new Enemy[4];
+
+        enemyArray[0] = enemyFactory.getEnemy("enemy1");
+        enemyArray[1] = enemyFactory.getEnemy("enemy1");
+        enemyArray[2] = enemyFactory.getEnemy("enemy2");
+        enemyArray[3] = enemyFactory.getEnemy("enemy2");
+
+        enemyArray[0].setMovementStrat(new MoveLeftRight());
+        enemyArray[1].setMovementStrat(new MoveUpDown());
+        enemyArray[2].setMovementStrat(new MoveLeftRight());
+        enemyArray[3].setMovementStrat(new MoveUpDown());
+
+        enemySprites = new ImageView[4];
+        enemySprites[0] = findViewById(R.id.enemy1);
+        enemySprites[1] = findViewById(R.id.enemy2);
+        enemySprites[2] = findViewById(R.id.enemy3);
+        enemySprites[3] = findViewById(R.id.enemy4);
+
+        //setup initial positions
+        int[] xPositions = {500, 600, 700, 800};
+        int[] yPositions = {500, 600, 700, 800};
+        for (int i = 0; i < enemySprites.length; i++) {
+            enemySprites[i].setX(xPositions[i]);
+            enemyArray[i].setX(xPositions[i]);
+            enemySprites[i].setY(yPositions[i]);
+            enemyArray[i].setY(yPositions[i]);
+        }
+        return enemyArray;
+    }
+
+    private void startEnemyMovement() {
+        final Handler handler = new Handler();
+        handler.post(new Runnable() {
+            public void run() {
+                for (int i = 0; i < enemies.length; i++) {
+                    enemies[i].move();
+                    enemySprites[i].setX(enemies[i].getX());
+                    enemySprites[i].setY(enemies[i].getY());
+                }
+                handler.postDelayed(this, 100);
             }
         });
     }
