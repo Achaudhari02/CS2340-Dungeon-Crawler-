@@ -154,8 +154,8 @@ public class GameActivity extends AppCompatActivity {
         enemyArray[3] = enemyFactory.getEnemy("enemy2");
 
         enemyArray[0].setMovementStrat(new MoveLeftRight());
-        enemyArray[1].setMovementStrat(new MoveUpDown());
-        enemyArray[2].setMovementStrat(new MoveLeftRight());
+        enemyArray[1].setMovementStrat(new MoveLeftRight());
+        enemyArray[2].setMovementStrat(new MoveUpDown());
         enemyArray[3].setMovementStrat(new MoveUpDown());
 
         enemySprites = new ImageView[4];
