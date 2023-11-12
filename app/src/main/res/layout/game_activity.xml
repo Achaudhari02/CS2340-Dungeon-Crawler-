@@ -113,5 +113,37 @@
       app:layout_constraintTop_toBottomOf="@+id/scoreView"
       app:srcCompat="@drawable/button_blue_up" />
 
+  <ImageView
+      android:id="@+id/enemy1"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:srcCompat="@drawable/angel_idle_anim_f0"
+      tools:layout_editor_absoluteX="88dp"
+      tools:layout_editor_absoluteY="291dp" />
+
+  <ImageView
+      android:id="@+id/enemy2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:srcCompat="@drawable/angel_idle_anim_f0"
+      tools:layout_editor_absoluteX="142dp"
+      tools:layout_editor_absoluteY="291dp" />
+
+  <ImageView
+      android:id="@+id/enemy3"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:srcCompat="@drawable/angel_idle_anim_f0"
+      tools:layout_editor_absoluteX="178dp"
+      tools:layout_editor_absoluteY="291dp" />
+
+  <ImageView
+      android:id="@+id/enemy4"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:srcCompat="@drawable/angel_idle_anim_f0"
+      tools:layout_editor_absoluteX="213dp"
+      tools:layout_editor_absoluteY="291dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

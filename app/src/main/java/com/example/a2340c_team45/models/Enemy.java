@@ -12,7 +12,7 @@ public abstract class Enemy {
     public abstract int getSpeed();
     public abstract int getStrength();
     private EnemyMovementStrat movementStrat;
-    private List<EnemySubscriber> subscribers = new ArrayList<>();
+    private static List<EnemySubscriber> subscribers = new ArrayList<>();
     public int getX() {
         return x;
     }
@@ -28,6 +28,11 @@ public abstract class Enemy {
             subscriber.updateEnemy(this);
         }
     }
+
+    public void updateEnemy(Enemy this) {
+        move();
+    }
+
     public void setMovementStrat(EnemyMovementStrat movementStrat) {
         this.movementStrat = movementStrat;
     }
