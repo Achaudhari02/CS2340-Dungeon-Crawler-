@@ -16,6 +16,8 @@ import com.example.a2340c_team45.Strategy.MoveUp;
 import com.example.a2340c_team45.Strategy.MoveDown;
 import com.example.a2340c_team45.Strategy.MoveRight;
 import com.example.a2340c_team45.Strategy.MoveLeft;
+import com.example.a2340c_team45.models.Enemy;
+import com.example.a2340c_team45.models.EnemyFactory;
 import com.example.a2340c_team45.models.LeaderboardEntry;
 import com.example.a2340c_team45.R;
 import com.example.a2340c_team45.models.Player;
@@ -69,6 +71,10 @@ public class GameActivity extends AppCompatActivity {
         player.setY(0);
         updateScore();
         Leaderboard lb = Leaderboard.getLeaderboard();
+
+        //Initialize Enemies
+        initializeEnemies();
+
         //        endButton.setOnClickListener(new View.OnClickListener() {
         //            @Override
         //            public void onClick(View view) {
@@ -147,4 +153,17 @@ public class GameActivity extends AppCompatActivity {
             }
         });
     }
+
+    private Enemy[] initializeEnemies() {
+        EnemyFactory enemyFactory = new EnemyFactory();
+        Enemy[] enemyArray = new Enemy[4];
+
+        enemyArray[0] = enemyFactory.getEnemy("enemy1");
+        enemyArray[1] = enemyFactory.getEnemy("enemy1");
+        enemyArray[2] = enemyFactory.getEnemy("enemy2");
+        enemyArray[3] = enemyFactory.getEnemy("enemy2");
+
+        return enemyArray;
+    }
+
 }

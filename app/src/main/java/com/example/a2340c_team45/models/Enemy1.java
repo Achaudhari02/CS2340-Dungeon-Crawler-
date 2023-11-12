@@ -10,4 +10,6 @@ public class Enemy1 extends Enemy{
     public int getStrength() {
         return 20;
     }
+
+
 }
