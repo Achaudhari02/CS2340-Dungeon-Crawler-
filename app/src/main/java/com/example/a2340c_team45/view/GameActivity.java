@@ -1,21 +1,28 @@
 package com.example.a2340c_team45.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import java.util.ArrayList;
 
 import android.os.Handler;
 
+import com.example.a2340c_team45.Observer.EnemySubscriber;
+import com.example.a2340c_team45.Strategy.MoveLeftRight;
 import com.example.a2340c_team45.Strategy.MoveUp;
 import com.example.a2340c_team45.Strategy.MoveDown;
 import com.example.a2340c_team45.Strategy.MoveRight;
 import com.example.a2340c_team45.Strategy.MoveLeft;
+import com.example.a2340c_team45.Strategy.MoveUpDown;
+import com.example.a2340c_team45.models.Enemy;
+import com.example.a2340c_team45.models.EnemyFactory;
 import com.example.a2340c_team45.models.LeaderboardEntry;
 import com.example.a2340c_team45.R;
 import com.example.a2340c_team45.models.Player;
@@ -33,6 +40,11 @@ public class GameActivity extends AppCompatActivity {
     private ImageView playerSprite;
     private String diffStr;
     private Bitmap playerImagePath;
+
+    //Enemy ImageViews
+    Enemy baseEnemy;
+    Enemy[] enemies;
+    private ImageView[] enemySprites;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +81,18 @@ public class GameActivity extends AppCompatActivity {
         player.setY(0);
         updateScore();
         Leaderboard lb = Leaderboard.getLeaderboard();
+
+        //Initialize Enemies
+        enemies = initializeEnemies();
+        enemySprites = new ImageView[4];
+        enemySprites[0] = findViewById(R.id.enemy1);
+        enemySprites[1] = findViewById(R.id.enemy2);
+        enemySprites[2] = findViewById(R.id.enemy3);
+        enemySprites[3] = findViewById(R.id.enemy4);
+
+        enemyMovement();
+
+
         //        endButton.setOnClickListener(new View.OnClickListener() {
         //            @Override
         //            public void onClick(View view) {
@@ -147,4 +171,36 @@ public class GameActivity extends AppCompatActivity {
             }
         });
     }
+
+    private Enemy[] initializeEnemies() {
+        EnemyFactory enemyFactory = new EnemyFactory();
+        Enemy[] enemyArray = new Enemy[4];
+
+        enemyArray[0] = enemyFactory.getEnemy("enemy1");
+        enemyArray[1] = enemyFactory.getEnemy("enemy1");
+        enemyArray[2] = enemyFactory.getEnemy("enemy2");
+        enemyArray[3] = enemyFactory.getEnemy("enemy2");
+
+        enemyArray[0].setMovementStrat(new MoveLeftRight());
+        enemyArray[1].setMovementStrat(new MoveLeftRight());
+        enemyArray[2].setMovementStrat(new MoveUpDown());
+        enemyArray[3].setMovementStrat(new MoveUpDown());
+
+        return enemyArray;
+    }
+
+    private void enemyMovement() {
+        final Handler handler = new Handler();
+        handler.post(new Runnable() {
+            public void run() {
+                for (int i = 0; i < enemies.length; i++) {
+                    enemies[i].move();
+                    enemySprites[i].setX(enemies[i].getX());
+                    enemySprites[i].setX(enemies[i].getY());
+                }
+                handler.postDelayed(this, 100);
+            }
+        });
+    }
+
 }
