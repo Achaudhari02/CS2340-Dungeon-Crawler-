@@ -84,29 +84,7 @@ public class GameActivity extends AppCompatActivity {
 
         //Initialize Enemies
         enemies = initializeEnemies();
-
-        enemyMovement();
-
-
-        //        endButton.setOnClickListener(new View.OnClickListener() {
-        //            @Override
-        //            public void onClick(View view) {
-        //                Calendar cl2 = Calendar.getInstance();
-        //                running = false;
-        //                score -= time;
-        //                Intent intent = new Intent(getApplicationContext(), EndActivity.class);
-        //                intent.putExtra("score", score);
-        //                intent.putExtra("name", name);
-        //                intent.putExtra("msg", "Congratulations! You won!");
-        //                startActivities(new Intent[]{intent});
-        //
-        //                //adding the current player and score to leaderboard
-        //                Leaderboard lb = Leaderboard.getLeaderboard();
-        //                LeaderboardEntry newEntry = new LeaderboardEntry(name, score);
-        //                lb.add(newEntry);
-        //            }
-        //        });
-
+        startEnemyMovement();
 
         if (diff == 1) {
 
@@ -118,8 +96,8 @@ public class GameActivity extends AppCompatActivity {
             startingHp.setText("50");
         }
     }
-    // player movement
 
+    // player movement
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         Player player = Player.getPlayer();
         switch (keyCode) {
@@ -186,15 +164,20 @@ public class GameActivity extends AppCompatActivity {
         enemySprites[1] = findViewById(R.id.enemy2);
         enemySprites[2] = findViewById(R.id.enemy3);
         enemySprites[3] = findViewById(R.id.enemy4);
-        for (int i = 0; i < enemySprites.length; i++) {
-            enemySprites[i].setX(100);
-            enemySprites[i].setY(100);
-        }
 
+        //setup initial positions
+        int[] xPositions = {500, 600, 700, 800};
+        int[] yPositions = {500, 600, 700, 800};
+        for (int i = 0; i < enemySprites.length; i++) {
+            enemySprites[i].setX(xPositions[i]);
+            enemyArray[i].setX(xPositions[i]);
+            enemySprites[i].setY(yPositions[i]);
+            enemyArray[i].setY(yPositions[i]);
+        }
         return enemyArray;
     }
 
-    private void enemyMovement() {
+    private void startEnemyMovement() {
         final Handler handler = new Handler();
         handler.post(new Runnable() {
             public void run() {
@@ -202,7 +185,6 @@ public class GameActivity extends AppCompatActivity {
                     enemies[i].move();
                     enemySprites[i].setX(enemies[i].getX());
                     enemySprites[i].setY(enemies[i].getY());
-//                    System.out.println("Enemy X, Y")
                 }
                 handler.postDelayed(this, 100);
             }
