@@ -12,9 +12,17 @@ public class EnemySpeedTest {
         Enemy enemy = factory.getEnemy("enemy1");
         assertEquals(5, enemy.getSpeed());
     }
+    @Test
     public void testEnemy2() {
         EnemyFactory factory = new EnemyFactory();
         Enemy enemy = factory.getEnemy("enemy2");
         assertEquals(10, enemy.getSpeed());
+    }
+
+    @Test
+    public void testEnemy3() {
+        EnemyFactory factory = new EnemyFactory();
+        Enemy enemy = factory.getEnemy("enemy3");
+        assertEquals(15, enemy.getSpeed());
     }
 }
