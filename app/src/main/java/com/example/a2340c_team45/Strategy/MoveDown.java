@@ -9,7 +9,7 @@ import java.util.List;
 
 
 public class MoveDown implements MovementStrat, Subscriber {
-    List<Enemy> ls = new ArrayList<>();
+    private List<Enemy> ls = new ArrayList<>();
 
     public void move(Player player) {
         if (ableMove(player)) {

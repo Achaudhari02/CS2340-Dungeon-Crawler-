@@ -51,14 +51,15 @@ public abstract class Enemy {
     }
 
     public void checkCollAndHP(Player player, Enemy enemy) {
-
+        if (isColliding(player, enemy)) {
+            player.decreaseHealth(enemy.getStrength());
+        }
             if (isColliding(player, enemy) && canHit) {
                 player.decreaseHealth(enemy.getStrength());
                 Handler h = new Handler();
                 canHit = false;
                 h.postDelayed(toggleCanHit, 1000);
             }
-
     }
 
     public boolean isColliding(Player player, Enemy enemy) {
