@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
-    private int health;
+    private static int health;
     private String name;
     private int difficulty;
     private Bitmap playerImage;
