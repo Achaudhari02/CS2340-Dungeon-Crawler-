@@ -37,4 +37,30 @@ public class EnemyMovementTest {
         enemy.move();
         assertEquals(0, enemy.getY());
     }
+    @Test
+    public void testEnemy1Collision() {
+        EnemyFactory factory = new EnemyFactory();
+        Enemy enemy = factory.getEnemy("enemy1");
+        enemy.setX(10);
+        enemy.setY(0);
+        Player player = Player.getPlayer();
+        player.setX(10);
+        player.setY(0);
+        enemy.move();
+        assertEquals(enemy.isColliding(player,enemy),true);
+
+    }
+    @Test
+    public void testEnemy2Collision() {
+        EnemyFactory factory = new EnemyFactory();
+        Enemy enemy = factory.getEnemy("enemy2");
+        enemy.setX(999);
+        enemy.setY(999);
+        Player player = Player.getPlayer();
+        player.setX(999);
+        player.setY(999);
+        enemy.move();
+        assertEquals(enemy.isColliding(player,enemy),true);
+
+    }
 }

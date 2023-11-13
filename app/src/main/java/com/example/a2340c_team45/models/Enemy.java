@@ -56,7 +56,7 @@ public abstract class Enemy {
 
     }
 
-    private boolean isColliding(Player player, Enemy enemy) {
+    public boolean isColliding(Player player, Enemy enemy) {
         return Math.abs(player.getX() - enemy.getX()) < 25
                 || Math.abs(player.getY() - enemy.getY()) < 25;
     }
