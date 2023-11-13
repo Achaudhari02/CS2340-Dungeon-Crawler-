@@ -88,11 +88,13 @@ public class GameActivity extends AppCompatActivity {
         if (diff == 1) {
 
             startingHp.setText("100");
+            player.setHealth(100);
         } else if (diff == 2) {
-
             startingHp.setText("75");
+            player.setHealth(75);
         } else {
             startingHp.setText("50");
+            player.setHealth(50);
         }
     }
 
