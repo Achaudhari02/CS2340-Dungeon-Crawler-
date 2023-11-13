@@ -54,12 +54,12 @@ public abstract class Enemy {
         if (isColliding(player, enemy)) {
             player.decreaseHealth(enemy.getStrength());
         }
-            if (isColliding(player, enemy) && canHit) {
-                player.decreaseHealth(enemy.getStrength());
-                Handler h = new Handler();
-                canHit = false;
-                h.postDelayed(toggleCanHit, 1000);
-            }
+        if (isColliding(player, enemy) && canHit) {
+            player.decreaseHealth(enemy.getStrength());
+            Handler h = new Handler();
+            canHit = false;
+            h.postDelayed(toggleCanHit, 1000);
+        }
     }
 
     public boolean isColliding(Player player, Enemy enemy) {
@@ -68,7 +68,9 @@ public abstract class Enemy {
     }
 
     private static boolean canHit = true;
-    Runnable toggleCanHit = new Runnable() {
-        public void run() {canHit = true; }
+    private Runnable toggleCanHit = new Runnable() {
+        public void run() {
+            canHit = true;
+        }
     };
 }
