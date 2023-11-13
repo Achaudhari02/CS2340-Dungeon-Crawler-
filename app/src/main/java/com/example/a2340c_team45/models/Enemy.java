@@ -50,14 +50,15 @@ public abstract class Enemy {
 
     public void checkCollAndHP(Player player, Enemy enemy) {
 
-            if (isColliding(player, enemy)) {
-                player.decreaseHealth(enemy.getStrength());
-            }
-
+        if (isColliding(player, enemy)) {
+            player.decreaseHealth(enemy.getStrength());
+        }
     }
 
     public boolean isColliding(Player player, Enemy enemy) {
         return Math.abs(player.getX() - enemy.getX()) < 25
                 || Math.abs(player.getY() - enemy.getY()) < 25;
     }
+
+
 }
