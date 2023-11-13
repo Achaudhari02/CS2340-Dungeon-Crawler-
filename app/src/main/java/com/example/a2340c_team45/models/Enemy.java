@@ -47,4 +47,17 @@ public abstract class Enemy {
     public void setY(int y) {
         this.y = y;
     }
+
+    public void checkCollAndHP(Player player, Enemy enemy) {
+
+            if (isColliding(player, enemy)) {
+                player.decreaseHealth(enemy.getStrength());
+            }
+
+    }
+
+    private boolean isColliding(Player player, Enemy enemy) {
+        return Math.abs(player.getX() - enemy.getX()) < 25
+                || Math.abs(player.getY() - enemy.getY()) < 25;
+    }
 }

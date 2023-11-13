@@ -94,17 +94,5 @@ public class Player {
         }
     }
 
-    public void checkCollAndHP(Player player, List<Enemy> enemies) {
-        for (Enemy enemy : enemies) {
-            if (isColliding(player, enemy)) {
-                player.decreaseHealth(enemy.getStrength());
-            }
-        }
-    }
-
-    private boolean isColliding(Player player, Enemy enemy) {
-        return Math.abs(player.getX() - enemy.getX()) < 25
-                || Math.abs(player.getY() - enemy.getY()) < 25;
-    }
 }
 

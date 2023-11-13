@@ -10,6 +10,8 @@ public class MoveLeftRight implements EnemySubscriber, EnemyMovementStrat {
     public void move(Enemy enemy) {
         checkDirection(enemy);
         enemy.setX(enemy.getX() - enemy.getSpeed() * direction); // move left
+        enemy.checkCollAndHP(Player.getPlayer(),enemy);
+
     }
     public void checkDirection(Enemy enemy) {
         if (enemy.getX() < 0 && movingLeft) {
