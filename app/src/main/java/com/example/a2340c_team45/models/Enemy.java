@@ -1,5 +1,7 @@
 package com.example.a2340c_team45.models;
 
+import android.os.Handler;
+
 import com.example.a2340c_team45.Observer.EnemySubscriber;
 import com.example.a2340c_team45.Strategy.EnemyMovementStrat;
 
@@ -50,8 +52,11 @@ public abstract class Enemy {
 
     public void checkCollAndHP(Player player, Enemy enemy) {
 
-            if (isColliding(player, enemy)) {
+            if (isColliding(player, enemy) && canHit) {
                 player.decreaseHealth(enemy.getStrength());
+                Handler h = new Handler();
+                canHit = false;
+                h.postDelayed(toggleCanHit, 1000);
             }
 
     }
@@ -60,4 +65,9 @@ public abstract class Enemy {
         return Math.abs(player.getX() - enemy.getX()) < 25
                 || Math.abs(player.getY() - enemy.getY()) < 25;
     }
+
+    private static boolean canHit = true;
+    Runnable toggleCanHit = new Runnable() {
+        public void run() {canHit = true; }
+    };
 }
