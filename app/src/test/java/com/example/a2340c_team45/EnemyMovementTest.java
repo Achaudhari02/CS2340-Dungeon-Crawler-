@@ -1,6 +1,7 @@
 package com.example.a2340c_team45;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import com.example.a2340c_team45.Strategy.MoveLeft;
 import com.example.a2340c_team45.Strategy.MoveLeftRight;
@@ -62,5 +63,30 @@ public class EnemyMovementTest {
         enemy.move();
         assertEquals(enemy.isColliding(player,enemy),true);
 
+    }
+
+    @Test
+    public void testEnemy3Collision() {
+        EnemyFactory factory = new EnemyFactory();
+        Enemy enemy = factory.getEnemy("enemy3");
+        enemy.setX(10);
+        enemy.setY(0);
+        Player player = Player.getPlayer();
+        player.setX(10);
+        player.setY(0);
+        enemy.move();
+        assertTrue(enemy.isColliding(player, enemy));
+    }
+    @Test
+    public void testEnemy4Collision() {
+        EnemyFactory factory = new EnemyFactory();
+        Enemy enemy = factory.getEnemy("enemy4");
+        enemy.setX(999);
+        enemy.setY(999);
+        Player player = Player.getPlayer();
+        player.setX(999);
+        player.setY(999);
+        enemy.move();
+        assertTrue(enemy.isColliding(player, enemy));
     }
 }
