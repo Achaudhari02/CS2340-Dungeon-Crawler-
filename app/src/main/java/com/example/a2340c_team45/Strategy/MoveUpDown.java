@@ -2,6 +2,7 @@ package com.example.a2340c_team45.Strategy;
 
 import com.example.a2340c_team45.Observer.EnemySubscriber;
 import com.example.a2340c_team45.models.Enemy;
+import com.example.a2340c_team45.models.Player;
 
 public class MoveUpDown implements EnemySubscriber, EnemyMovementStrat{
     int direction = 1;
@@ -9,6 +10,7 @@ public class MoveUpDown implements EnemySubscriber, EnemyMovementStrat{
     public void move(Enemy enemy) {
         checkDirection(enemy);
         enemy.setY(enemy.getY() - enemy.getSpeed() * direction); // move up
+        enemy.checkCollAndHP(Player.getPlayer(),enemy);
     }
 
     public void checkDirection(Enemy enemy) {
