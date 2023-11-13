@@ -29,6 +29,7 @@ public class Map1 extends AppCompatActivity {
     private Bitmap playerImagePath;
     private String diffStr;
     private TextView scoreView;
+    private TextView hp;
 
     Enemy[] enemies;
     private ImageView[] enemySprites;
@@ -51,6 +52,7 @@ public class Map1 extends AppCompatActivity {
         updateScore();
         enemies = initializeEnemies();
         startEnemyMovement();
+        hp = findViewById(R.id.hp);
     }
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         Player player = Player.getPlayer();
@@ -85,12 +87,7 @@ public class Map1 extends AppCompatActivity {
         intent.putExtra("diff", diffStr);
         intent.putExtra("skin", playerImagePath);
         intent.putExtra("name", name);
-        if (player.getHealth() <= 0) {
-            Player.setLocation("EndActivity");
-            intent.putExtra("msg2", "Game Over :(");
-        } else {
-            Player.setLocation("Map2");
-        }
+        Player.setLocation("Map2");
 
         startActivity(intent);
     }
@@ -145,10 +142,23 @@ public class Map1 extends AppCompatActivity {
                     enemies[i].move();
                     enemySprites[i].setX(enemies[i].getX());
                     enemySprites[i].setY(enemies[i].getY());
+                    updateHealth();
                 }
                 handler.postDelayed(this, 100);
             }
         });
+    }
+    boolean doOnce = true;
+    private void updateHealth() {
+        int health = Player.getPlayer().getHealth();
+        if (health == 0 && doOnce) {
+            doOnce = false;
+            Intent intent = new Intent(getApplicationContext(), EndActivity.class);
+            intent.putExtra("msg", "Game Over :(");
+            startActivity(intent);
+        } else {
+            hp.setText("" + health);
+        }
     }
 
 
