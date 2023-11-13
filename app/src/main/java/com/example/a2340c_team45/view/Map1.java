@@ -32,6 +32,7 @@ public class Map1 extends AppCompatActivity {
 
     private Enemy[] enemies;
     private ImageView[] enemySprites;
+    private TextView hp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +50,11 @@ public class Map1 extends AppCompatActivity {
         player.setX(0);
         player.setY(0);
         updateScore();
+        hp = findViewById(R.id.playerHealth);
+
         enemies = initializeEnemies();
         startEnemyMovement();
+
     }
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         Player player = Player.getPlayer();
@@ -145,11 +149,23 @@ public class Map1 extends AppCompatActivity {
                     enemies[i].move();
                     enemySprites[i].setX(enemies[i].getX());
                     enemySprites[i].setY(enemies[i].getY());
+                    updateHealth();
                 }
                 handler.postDelayed(this, 100);
             }
         });
     }
 
-
+    boolean doOnce = true;
+    private void updateHealth() {
+        int health = Player.getPlayer().getHealth();
+        if (health == 0 && doOnce) {
+            doOnce = false;
+            Intent intent = new Intent(getApplicationContext(), EndActivity.class);
+            intent.putExtra("msg", "Game Over :(");
+            startActivity(intent);
+        } else {
+            hp.setText("" + health);
+        }
+    }
 }
