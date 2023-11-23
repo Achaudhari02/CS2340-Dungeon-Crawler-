@@ -1,20 +1,17 @@
 package com.example.a2340c_team45.view;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import java.util.ArrayList;
 
 import android.os.Handler;
 
-import com.example.a2340c_team45.Observer.EnemySubscriber;
 import com.example.a2340c_team45.Strategy.MoveLeftRight;
 import com.example.a2340c_team45.Strategy.MoveUp;
 import com.example.a2340c_team45.Strategy.MoveDown;
@@ -42,7 +39,7 @@ public class GameActivity extends AppCompatActivity {
     private Bitmap playerImagePath;
 
     //Enemy ImageViews
-    Enemy[] enemies;
+    private Enemy[] enemies;
     private ImageView[] enemySprites;
 
     @Override
@@ -86,7 +83,6 @@ public class GameActivity extends AppCompatActivity {
         startEnemyMovement();
 
         if (diff == 1) {
-
             startingHp.setText("100");
             player.setHealth(100);
         } else if (diff == 2) {

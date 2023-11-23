@@ -28,7 +28,7 @@ public class Map2 extends AppCompatActivity {
     private Bitmap playerImagePath;
     private TextView scoreView;
     private String diffStr;
-    Enemy[] enemies;
+    private Enemy[] enemies;
     private ImageView[] enemySprites;
     private TextView playerHealth;
 

@@ -30,7 +30,7 @@ public class Map1 extends AppCompatActivity {
     private String diffStr;
     private TextView scoreView;
 
-    Enemy[] enemies;
+    private Enemy[] enemies;
     private ImageView[] enemySprites;
     private TextView hp;
 

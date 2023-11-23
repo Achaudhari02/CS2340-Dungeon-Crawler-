@@ -27,7 +27,7 @@ public class Map3 extends AppCompatActivity {
     private Player player = Player.getPlayer();
     private String diffStr;
     private TextView scoreView;
-    Enemy[] enemies;
+    private Enemy[] enemies;
     private ImageView[] enemySprites;
     private TextView playerHealth;
 

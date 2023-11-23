@@ -5,12 +5,12 @@ import com.example.a2340c_team45.models.Enemy;
 import com.example.a2340c_team45.models.Player;
 
 public class MoveLeftRight implements EnemySubscriber, EnemyMovementStrat {
-    int direction = 1;
-    boolean movingLeft = true;
+    private int direction = 1;
+    private boolean movingLeft = true;
     public void move(Enemy enemy) {
         checkDirection(enemy);
         enemy.setX(enemy.getX() - enemy.getSpeed() * direction); // move left
-        enemy.checkCollAndHP(Player.getPlayer(),enemy);
+        enemy.checkCollAndHP(Player.getPlayer(), enemy);
 
     }
     public void checkDirection(Enemy enemy) {
