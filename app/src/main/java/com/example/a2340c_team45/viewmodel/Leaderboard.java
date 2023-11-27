@@ -64,7 +64,11 @@ public class Leaderboard {
     }
 
     public static int getScore() {
-        return score - time;
+        return score;
+    }
+    public static int updateScore() {return score - time;}
+    public static void setScore(int newScore) {
+        score = newScore;
     }
 
     private static void doTime() {

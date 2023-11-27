@@ -151,7 +151,7 @@ public class Map1 extends AppCompatActivity {
                     enemySprites[i].setY(enemies[i].getY());
                     updateHealth();
                 }
-                handler.postDelayed(this, 100);
+                handler.postDelayed(this, 300);
             }
         });
     }
