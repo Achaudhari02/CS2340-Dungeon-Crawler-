@@ -52,11 +52,12 @@ public abstract class Enemy {
     }
 
     public void checkCollAndHP(Player player, Enemy enemy) {
-        Leaderboard lb = Leaderboard.getLeaderboard();
-   //     if (isColliding(player, enemy)) {
-   //         player.decreaseHealth(enemy.getStrength());
-  //      }
-        if (isColliding(player, enemy) && canHit) {
+        System.out.println(player.getHasPowerup1());
+        if (isColliding(player, enemy) && !player.getHasPowerup1()) {
+            player.decreaseHealth(enemy.getStrength());
+        }
+        if (isColliding(player, enemy) && canHit && !player.getHasPowerup1()) {
+
             player.decreaseHealth(enemy.getStrength());
             Handler h = new Handler();
             canHit = false;

@@ -8,6 +8,6 @@ public class Enemy3 extends Enemy {
 
     @Override
     public int getStrength() {
-        return 10;
+        return 5;
     }
 }
