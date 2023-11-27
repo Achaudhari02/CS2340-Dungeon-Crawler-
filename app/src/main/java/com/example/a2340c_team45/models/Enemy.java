@@ -4,6 +4,7 @@ import android.os.Handler;
 
 import com.example.a2340c_team45.Observer.EnemySubscriber;
 import com.example.a2340c_team45.Strategy.EnemyMovementStrat;
+import com.example.a2340c_team45.viewmodel.Leaderboard;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,10 +57,12 @@ public abstract class Enemy {
             player.decreaseHealth(enemy.getStrength());
         }
         if (isColliding(player, enemy) && canHit && !player.getHasPowerup1()) {
+
             player.decreaseHealth(enemy.getStrength());
             Handler h = new Handler();
             canHit = false;
             h.postDelayed(toggleCanHit, 1000);
+            lb.setScore(Leaderboard.getScore() - 100);
         }
     }
 
