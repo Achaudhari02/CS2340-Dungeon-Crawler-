@@ -20,6 +20,7 @@ import com.example.a2340c_team45.Strategy.MoveUpDown;
 import com.example.a2340c_team45.models.Enemy;
 import com.example.a2340c_team45.models.EnemyFactory;
 import com.example.a2340c_team45.models.Player;
+import com.example.a2340c_team45.models.Powerup1;
 import com.example.a2340c_team45.viewmodel.Leaderboard;
 
 public class Map1 extends AppCompatActivity {
@@ -29,6 +30,8 @@ public class Map1 extends AppCompatActivity {
     private Bitmap playerImagePath;
     private String diffStr;
     private TextView scoreView;
+
+    private ImageView powerup1Sprite;
 
     private Enemy[] enemies;
     private ImageView[] enemySprites;
@@ -51,7 +54,9 @@ public class Map1 extends AppCompatActivity {
         player.setY(0);
         updateScore();
         hp = findViewById(R.id.playerHealth);
-
+        powerup1Sprite = findViewById(R.id.powerup1);
+        powerup1Sprite.setX(200);
+        powerup1Sprite.setY(300);
         enemies = initializeEnemies();
         startEnemyMovement();
 
@@ -77,6 +82,12 @@ public class Map1 extends AppCompatActivity {
         player.notifySubscribers();
         playerSprite.setX(player.getX());
         playerSprite.setY(player.getY());
+        if (player.getX() + 50 >= powerup1Sprite.getX() && player.getX() - 50 <= powerup1Sprite.getX()
+            && player.getY() + 50 >= powerup1Sprite.getY() && player.getY() - 50 <= powerup1Sprite.getY()) {
+            player.setHasPowerup1(true);
+            powerup1Sprite.setImageAlpha(0);
+        }
+
         if (player.getX() >= 300 && player.getX() <= 380 && player.getY() >= 500 && player.getY()
                 <= 600) {
             goToNextScene();
