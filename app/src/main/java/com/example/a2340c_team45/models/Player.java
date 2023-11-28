@@ -19,6 +19,7 @@ public class Player {
     private MovementStrat movementStrat;
     private List<Subscriber> subscribers = new ArrayList<>();
     private static String location;
+    private boolean hasPowerup1 = false; // powerup1 means health doesn't decrease
     private Player() {
 
     }
@@ -85,6 +86,14 @@ public class Player {
     }
     public static void setLocation(String lc) {
         location = lc;
+    }
+
+    public boolean getHasPowerup1() {
+        return hasPowerup1;
+    }
+
+    public void setHasPowerup1(boolean bool) {
+        hasPowerup1 = bool;
     }
 
     public void decreaseHealth(int damage) {

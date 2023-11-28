@@ -136,7 +136,7 @@ public class GameActivity extends AppCompatActivity {
         final Handler handler = new Handler();
         handler.post(new Runnable() {
             public void run() {
-                scoreView.setText("Score:" + Leaderboard.getScore());
+                scoreView.setText("Score:" + Leaderboard.updateScore());
                 handler.postDelayed(this, 1000);
             }
         });
@@ -184,7 +184,7 @@ public class GameActivity extends AppCompatActivity {
                     enemySprites[i].setY(enemies[i].getY());
                     updateHealth();
                 }
-                handler.postDelayed(this, 100);
+                handler.postDelayed(this, 300);
             }
         });
     }

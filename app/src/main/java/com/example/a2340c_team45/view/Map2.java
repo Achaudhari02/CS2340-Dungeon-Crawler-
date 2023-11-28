@@ -49,6 +49,7 @@ public class Map2 extends AppCompatActivity {
         player.setX(0);
         player.setY(0);
         playerHealth = findViewById(R.id.playerHealth);
+        player.setHasPowerup1(false);
         enemies = initializeEnemies();
         startEnemyMovement();
     }
@@ -141,7 +142,7 @@ public class Map2 extends AppCompatActivity {
                     enemySprites[i].setY(enemies[i].getY());
                     updateHealth();
                 }
-                handler.postDelayed(this, 100);
+                handler.postDelayed(this, 300);
             }
         });
     }
