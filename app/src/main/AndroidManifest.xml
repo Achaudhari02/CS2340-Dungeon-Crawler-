@@ -11,6 +11,38 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme._2340C_Team45"
-        tools:targetApi="31" />
+        tools:targetApi="31">
+        <activity
+            android:name=".view.EndActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.Map1"
+            android:exported="false" />
+        <activity
+            android:name=".view.Map2"
+            android:exported="false" />
+        <activity
+            android:name=".view.Map3"
+            android:exported="false" />
+        <activity
+            android:name=".view.GameActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.InitialActivity"
+            android:exported="false"> <!-- Default Intent Filter -->
+            <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
 
 </manifest>
