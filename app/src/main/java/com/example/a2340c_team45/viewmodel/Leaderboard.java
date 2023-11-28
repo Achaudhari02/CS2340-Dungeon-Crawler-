@@ -21,6 +21,12 @@ public class Leaderboard {
         }
         return leaderboard;
     }
+    public static Leaderboard getLeaderBoardTest() {
+        if (leaderboard == null) {
+            leaderboard = new Leaderboard();
+        }
+        return leaderboard;
+    }
     public void setArrayList(ArrayList<LeaderboardEntry> entries) {
         this.entries = entries;
     }
@@ -64,7 +70,14 @@ public class Leaderboard {
     }
 
     public static int getScore() {
-        return score - time;
+        return score;
+    }
+    public static int updateScore() {return score - time;}
+    public static void setScore(int newScore) {
+        score = newScore;
+    }
+    public static void setInitialScore() {
+        score = 1000;
     }
 
     private static void doTime() {

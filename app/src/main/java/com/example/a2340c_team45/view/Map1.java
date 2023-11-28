@@ -20,6 +20,7 @@ import com.example.a2340c_team45.Strategy.MoveUpDown;
 import com.example.a2340c_team45.models.Enemy;
 import com.example.a2340c_team45.models.EnemyFactory;
 import com.example.a2340c_team45.models.Player;
+import com.example.a2340c_team45.models.Powerup1;
 import com.example.a2340c_team45.viewmodel.Leaderboard;
 
 public class Map1 extends AppCompatActivity {
@@ -29,10 +30,12 @@ public class Map1 extends AppCompatActivity {
     private Bitmap playerImagePath;
     private String diffStr;
     private TextView scoreView;
-    private TextView hp;
 
-    Enemy[] enemies;
+    private ImageView powerup1Sprite;
+
+    private Enemy[] enemies;
     private ImageView[] enemySprites;
+    private TextView hp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +53,13 @@ public class Map1 extends AppCompatActivity {
         player.setX(0);
         player.setY(0);
         updateScore();
+        hp = findViewById(R.id.playerHealth);
+        powerup1Sprite = findViewById(R.id.powerup1);
+        powerup1Sprite.setX(200);
+        powerup1Sprite.setY(300);
         enemies = initializeEnemies();
         startEnemyMovement();
-        hp = findViewById(R.id.hp);
+
     }
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         Player player = Player.getPlayer();
@@ -75,6 +82,12 @@ public class Map1 extends AppCompatActivity {
         player.notifySubscribers();
         playerSprite.setX(player.getX());
         playerSprite.setY(player.getY());
+        if (player.getX() + 50 >= powerup1Sprite.getX() && player.getX() - 50 <= powerup1Sprite.getX()
+            && player.getY() + 50 >= powerup1Sprite.getY() && player.getY() - 50 <= powerup1Sprite.getY()) {
+            player.setHasPowerup1(true);
+            powerup1Sprite.setImageAlpha(0);
+        }
+
         if (player.getX() >= 300 && player.getX() <= 380 && player.getY() >= 500 && player.getY()
                 <= 600) {
             goToNextScene();
@@ -87,7 +100,12 @@ public class Map1 extends AppCompatActivity {
         intent.putExtra("diff", diffStr);
         intent.putExtra("skin", playerImagePath);
         intent.putExtra("name", name);
-        Player.setLocation("Map2");
+        if (player.getHealth() <= 0) {
+            Player.setLocation("EndActivity");
+            intent.putExtra("msg2", "Game Over :(");
+        } else {
+            Player.setLocation("Map2");
+        }
 
         startActivity(intent);
     }
@@ -144,10 +162,11 @@ public class Map1 extends AppCompatActivity {
                     enemySprites[i].setY(enemies[i].getY());
                     updateHealth();
                 }
-                handler.postDelayed(this, 100);
+                handler.postDelayed(this, 300);
             }
         });
     }
+
     boolean doOnce = true;
     private void updateHealth() {
         int health = Player.getPlayer().getHealth();
@@ -160,6 +179,4 @@ public class Map1 extends AppCompatActivity {
             hp.setText("" + health);
         }
     }
-
-
 }

@@ -6,24 +6,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/map2">
 
-    <TextView
-        android:id="@+id/scoreView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="28dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/hp2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="325dp"
-        tools:layout_editor_absoluteY="116dp" />
-
     <ImageView
         android:id="@+id/player_sprite_id3"
         android:layout_width="38dp"
@@ -35,6 +17,26 @@
         app:layout_constraintEnd_toStartOf="@+id/endButton"
         app:layout_constraintTop_toTopOf="@+id/textView2"
         app:srcCompat="@drawable/angel_idle_anim_f0" />
+
+    <TextView
+        android:id="@+id/scoreView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="33dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/playerHealth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="32dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView4"

@@ -27,8 +27,9 @@ public class Map3 extends AppCompatActivity {
     private Player player = Player.getPlayer();
     private String diffStr;
     private TextView scoreView;
-    Enemy[] enemies;
+    private Enemy[] enemies;
     private ImageView[] enemySprites;
+    private TextView playerHealth;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +45,7 @@ public class Map3 extends AppCompatActivity {
         playerSprite.setImageBitmap(playerImagePath);
         player.setX(0);
         player.setY(0);
+        playerHealth = findViewById(R.id.playerHealth);
 
         enemies = initializeEnemies();
         startEnemyMovement();
@@ -135,9 +137,22 @@ public class Map3 extends AppCompatActivity {
                     enemies[i].move();
                     enemySprites[i].setX(enemies[i].getX());
                     enemySprites[i].setY(enemies[i].getY());
+                    updateHealth();
                 }
-                handler.postDelayed(this, 100);
+                handler.postDelayed(this, 300);
             }
         });
+    }
+    boolean doOnce = true;
+    private void updateHealth() {
+        int health = Player.getPlayer().getHealth();
+        if (health == 0 && doOnce) {
+            doOnce = false;
+            Intent intent = new Intent(getApplicationContext(), EndActivity.class);
+            intent.putExtra("msg", "Game Over :(");
+            startActivity(intent);
+        } else {
+            playerHealth.setText("" + health);
+        }
     }
 }

@@ -4,6 +4,7 @@ import android.os.Handler;
 
 import com.example.a2340c_team45.Observer.EnemySubscriber;
 import com.example.a2340c_team45.Strategy.EnemyMovementStrat;
+import com.example.a2340c_team45.viewmodel.Leaderboard;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,14 +52,18 @@ public abstract class Enemy {
     }
 
     public void checkCollAndHP(Player player, Enemy enemy) {
+        System.out.println(player.getHasPowerup1());
+        if (isColliding(player, enemy) && !player.getHasPowerup1()) {
+            player.decreaseHealth(enemy.getStrength());
+        }
+        if (isColliding(player, enemy) && canHit && !player.getHasPowerup1()) {
 
-            if (isColliding(player, enemy) && canHit) {
-                player.decreaseHealth(enemy.getStrength());
-                Handler h = new Handler();
-                canHit = false;
-                h.postDelayed(toggleCanHit, 1000);
-            }
-
+            player.decreaseHealth(enemy.getStrength());
+            Handler h = new Handler();
+            canHit = false;
+            h.postDelayed(toggleCanHit, 1000);
+            lb.setScore(Leaderboard.getScore() - 100);
+        }
     }
 
     public boolean isColliding(Player player, Enemy enemy) {
@@ -67,7 +72,9 @@ public abstract class Enemy {
     }
 
     private static boolean canHit = true;
-    Runnable toggleCanHit = new Runnable() {
-        public void run() {canHit = true; }
+    private Runnable toggleCanHit = new Runnable() {
+        public void run() {
+            canHit = true;
+        }
     };
 }
