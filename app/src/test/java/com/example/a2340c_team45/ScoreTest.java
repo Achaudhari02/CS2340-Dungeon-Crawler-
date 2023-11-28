@@ -34,6 +34,23 @@ public class ScoreTest {
         }
         assertEquals(lb.getScore(), 950);
     }
-
+    @Test
+    public void testMultipleCollision() {
+        EnemyFactory factory = new EnemyFactory();
+        Enemy enemy = factory.getEnemy("enemy1");
+        Player player = Player.getPlayer();
+        player.setX(10);
+        enemy.setX(10);
+        Enemy enemy2 = factory.getEnemy("enemy2");
+        enemy2.setX(10);
+        lb.setInitialScore();
+        if (enemy.isColliding(player, enemy)) {
+            lb.setScore(lb.getScore() - 50);
+        }
+        if (enemy.isColliding(player, enemy2)) {
+            lb.setScore(lb.getScore() - 50);
+        }
+        assertEquals(lb.getScore(), 900);
+    }
 
 }
