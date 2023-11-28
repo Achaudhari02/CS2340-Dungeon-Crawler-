@@ -6,7 +6,11 @@ import com.example.a2340c_team45.models.Player;
 public class MoveLeft implements MovementStrat, Subscriber {
     public void move(Player player) {
         if (ableMove(player)) {
-            player.setX(player.getX() - 10);
+            if (player.getHasPowerup2()) {
+                player.setX(player.getY() - 20);
+            } else {
+                player.setX(player.getX() - 10);
+            }
         }
 
     }
