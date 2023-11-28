@@ -6,7 +6,11 @@ import com.example.a2340c_team45.models.Player;
 public class MoveUp implements MovementStrat, Subscriber {
     public void move(Player player) {
         if (ableMove(player)) {
-            player.setY(player.getY() - 10);
+            if (player.getHasPowerup2()) {
+                player.setY(player.getY() - 20);
+            } else {
+                player.setY(player.getY() - 10);
+            }
         }
     }
     public boolean ableMove(Player player) {

@@ -13,7 +13,11 @@ public class MoveDown implements MovementStrat, Subscriber {
 
     public void move(Player player) {
         if (ableMove(player)) {
-            player.setY(player.getY() + 10);
+            if (player.getHasPowerup2()) {
+                player.setY(player.getY() + 20);
+            } else {
+                player.setY(player.getY() + 10);
+            }
         }
     }
     public boolean ableMove(Player player) {
