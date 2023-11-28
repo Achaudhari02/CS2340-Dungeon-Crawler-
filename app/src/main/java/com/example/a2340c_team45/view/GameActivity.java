@@ -188,7 +188,7 @@ public class GameActivity extends AppCompatActivity {
             }
         });
     }
-    boolean doOnce = true;
+    private boolean doOnce = true;
     private void updateHealth() {
         int health = Player.getPlayer().getHealth();
         if (health == 0 && doOnce) {
