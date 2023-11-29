@@ -6,21 +6,20 @@ import com.example.a2340c_team45.models.Player;
 
 import org.junit.Test;
 
-public class HasPowerup1Test {
+public class HasPowerup2Test {
     @Test
-    public void testHasP1() {
+    public void testHasP2() {
         Player player = Player.getPlayer();
-        player.setHasPowerup1(true);
+        player.setHasPowerup2(true);
 
-        assertTrue(player.getHasPowerup1());
+        assertTrue(player.getHasPowerup2());
     }
 
     @Test
-    public void testNotHasP1() {
+    public void testNotHasP2() {
         Player player = Player.getPlayer();
-        player.setHasPowerup1(false);
+        player.setHasPowerup2(false);
 
-        assertFalse(player.getHasPowerup1());
+        assertTrue(player.getHasPowerup2());
     }
-
 }

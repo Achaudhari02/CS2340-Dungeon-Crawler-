@@ -55,8 +55,8 @@ public class Map2 extends AppCompatActivity {
         playerHealth = findViewById(R.id.playerHealth);
         player.setHasPowerup1(false);
         powerup2Sprite = findViewById(R.id.powerup2);
-        powerup2Sprite.setX(16);
-        powerup2Sprite.setY(97);
+        powerup2Sprite.setX(87);
+        powerup2Sprite.setY(139);
         enemies = initializeEnemies();
         startEnemyMovement();
 

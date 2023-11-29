@@ -7,9 +7,9 @@ public class MoveRight implements MovementStrat, Subscriber {
     public void move(Player player) {
         if (ableMove(player)) {
             if (player.getHasPowerup2()) {
-                player.setY(player.getX() + 20);
-            } else {
                 player.setX(player.getX() + 10);
+            } else {
+                player.setX(player.getX() + 5);
             }
         }
     }

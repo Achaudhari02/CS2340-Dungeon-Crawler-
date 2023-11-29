@@ -87,8 +87,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@android:drawable/btn_star_big_on"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="97dp" />
+        tools:layout_editor_absoluteX="87dp"
+        tools:layout_editor_absoluteY="139dp" />
 
     <ImageView
         android:id="@+id/weapon"

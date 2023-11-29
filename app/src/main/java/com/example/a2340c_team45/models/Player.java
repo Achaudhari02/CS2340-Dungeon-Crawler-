@@ -21,6 +21,7 @@ public class Player {
     private static String location;
     private boolean hasPowerup1 = false; // powerup1 means health doesn't decrease
     private boolean hasPowerup2 = false;
+    private boolean hasPowerup3 = false;
     private Player() {
 
     }
@@ -109,6 +110,7 @@ public class Player {
     public boolean getHasPowerup2() {
         return hasPowerup2;
     }
+    public boolean getHasPowerup3(){return hasPowerup3;}
 
     public void setHasPowerup1(boolean bool) {
         hasPowerup1 = bool;
@@ -116,6 +118,7 @@ public class Player {
     public void setHasPowerup2(boolean bool) {
         hasPowerup2 = bool;
     }
+    public void setHasPowerup3(boolean bool){hasPowerup3 = bool;}
 
     public void decreaseHealth(int damage) {
         this.health -= damage;
