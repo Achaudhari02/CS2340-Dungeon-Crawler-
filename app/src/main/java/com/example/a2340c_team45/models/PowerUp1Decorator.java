@@ -1,8 +1,8 @@
 package com.example.a2340c_team45.models;
 
-public class PowerUpDecorator extends PlayerDecorator {
+public class PowerUp1Decorator extends PlayerDecorator {
     private Player player;
-    public PowerUpDecorator(Player player) {
+    public PowerUp1Decorator(Player player) {
         super(player);
     }
 

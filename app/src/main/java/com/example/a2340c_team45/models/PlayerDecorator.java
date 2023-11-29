@@ -5,6 +5,11 @@ public abstract class PlayerDecorator {
     private int y;
 
     private boolean isCollected = false;
+
+    public PlayerDecorator(Player player) {
+
+    }
+
     public int getX() {
         return x;
     }
