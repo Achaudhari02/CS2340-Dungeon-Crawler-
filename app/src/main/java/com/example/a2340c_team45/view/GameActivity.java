@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.ArrayList;
@@ -91,6 +93,66 @@ public class GameActivity extends AppCompatActivity {
         } else {
             startingHp.setText("50");
             player.setHealth(50);
+        }
+
+        ImageButton attackButton = findViewById(R.id.attackButton);
+        attackButton.setOnClickListener(v -> {
+            attack();
+        });
+
+    }
+
+    private void attack() {
+        Player player = Player.getPlayer();
+        if (player.willAttack()) {
+            final Handler handler = new Handler();
+            ImageView weapon = findViewById(R.id.weapon);
+            weapon.setVisibility(View.VISIBLE);
+            handler.post(new Runnable() {
+                int currAngle = 0;
+                int count = 0;
+                public void run() {
+                    weapon.setRotation(currAngle);
+                    switch(currAngle) {
+                        case 0:
+                            weapon.setX(player.getX());
+                            weapon.setY(player.getY() + 100);
+                            break;
+                        case 90:
+                            weapon.setX(player.getX() + 100);
+                            weapon.setY(player.getY());
+                            break;
+                        case 180:
+                            weapon.setX(player.getX());
+                            weapon.setY(player.getY() - 100);
+                            break;
+                        case 270:
+                            weapon.setX(player.getX() - 100);
+                            weapon.setY(player.getY());
+                            break;
+                        default:
+                            break;
+                    }
+                    for (int i = 0; i < enemies.length; i++) {
+                        if (enemies[i] != null) {
+                            if (Math.abs(weapon.getX() - enemies[i].getX()) < 25
+                                    || Math.abs(weapon.getY() - enemies[i].getY()) < 25) {
+                                enemies[i] = null;
+                                enemySprites[i].setVisibility(View.INVISIBLE);
+                                Leaderboard.setScore(Leaderboard.getScore() + 500);
+                                player.setHealth(player.getHealth() + 50);
+                            }
+                        }
+                    }
+                    currAngle += 90;
+                    if (count++ != 3) {
+                        handler.postDelayed(this, 100);
+                    } else {
+                        weapon.setVisibility(View.INVISIBLE);
+                        player.toggleCanAttack();
+                    }
+                }
+            });
         }
     }
 
@@ -179,9 +241,11 @@ public class GameActivity extends AppCompatActivity {
         handler.post(new Runnable() {
             public void run() {
                 for (int i = 0; i < enemies.length; i++) {
-                    enemies[i].move();
-                    enemySprites[i].setX(enemies[i].getX());
-                    enemySprites[i].setY(enemies[i].getY());
+                    if (enemies[i] != null) {
+                        enemies[i].move();
+                        enemySprites[i].setX(enemies[i].getX());
+                        enemySprites[i].setY(enemies[i].getY());
+                    }
                     updateHealth();
                 }
                 handler.postDelayed(this, 300);

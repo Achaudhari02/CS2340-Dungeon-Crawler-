@@ -90,4 +90,27 @@
         tools:layout_editor_absoluteX="87dp"
         tools:layout_editor_absoluteY="139dp" />
 
+    <ImageView
+        android:id="@+id/weapon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rotation="90"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/weapon_katana"
+        tools:layout_editor_absoluteX="167dp"
+        tools:layout_editor_absoluteY="74dp" />
+
+    <ImageButton
+        android:id="@+id/attackButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="374dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.884"
+        app:srcCompat="@drawable/weapon_katana" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
