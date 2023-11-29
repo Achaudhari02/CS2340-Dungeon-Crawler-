@@ -20,6 +20,7 @@ public class MoveUp implements MovementStrat, Subscriber {
         }
         return true;
     }
+    @@Override
     public void update(Player player) {
         player.move();
     }
