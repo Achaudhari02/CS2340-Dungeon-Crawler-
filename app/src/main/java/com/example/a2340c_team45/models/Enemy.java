@@ -52,7 +52,6 @@ public abstract class Enemy {
     }
 
     public void checkCollAndHP(Player player, Enemy enemy) {
-        System.out.println(player.getHasPowerup1());
         if (isColliding(player, enemy) && !player.getHasPowerup1()) {
             player.decreaseHealth(enemy.getStrength());
         }
@@ -70,6 +69,8 @@ public abstract class Enemy {
         return Math.abs(player.getX() - enemy.getX()) < 25
                 || Math.abs(player.getY() - enemy.getY()) < 25;
     }
+
+
 
     private static boolean canHit = true;
     private Runnable toggleCanHit = new Runnable() {

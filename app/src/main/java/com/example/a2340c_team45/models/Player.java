@@ -41,6 +41,20 @@ public class Player {
     public void setMovementStrat(MovementStrat movementStrat) {
         this.movementStrat = movementStrat;
     }
+
+    private static boolean canAttack = true;
+    public static boolean willAttack() {
+        if (canAttack) {
+            toggleCanAttack();
+            return true;
+        }
+        return canAttack;
+    }
+    public static void toggleCanAttack() {
+        canAttack = !canAttack;
+    }
+
+
     public void move() {
         if (movementStrat != null) {
             movementStrat.move(this);

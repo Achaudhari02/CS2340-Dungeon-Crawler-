@@ -7,7 +7,12 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.KeyEvent;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.a2340c_team45.R;
@@ -20,7 +25,7 @@ import com.example.a2340c_team45.Strategy.MoveUpDown;
 import com.example.a2340c_team45.models.Enemy;
 import com.example.a2340c_team45.models.EnemyFactory;
 import com.example.a2340c_team45.models.Player;
-import com.example.a2340c_team45.models.Powerup1;
+import com.example.a2340c_team45.models.PowerUpDecorator;
 import com.example.a2340c_team45.viewmodel.Leaderboard;
 
 public class Map1 extends AppCompatActivity {
@@ -60,7 +65,66 @@ public class Map1 extends AppCompatActivity {
         enemies = initializeEnemies();
         startEnemyMovement();
 
+        ImageButton attackButton = findViewById(R.id.attackButton);
+        attackButton.setOnClickListener(v -> {
+            attack();
+        });
     }
+
+    private void attack() {
+        Player player = Player.getPlayer();
+        if (player.willAttack()) {
+            final Handler handler = new Handler();
+            ImageView weapon = findViewById(R.id.weapon);
+            weapon.setVisibility(View.VISIBLE);
+            handler.post(new Runnable() {
+                int currAngle = 0;
+                int count = 0;
+                public void run() {
+                    weapon.setRotation(currAngle);
+                    switch(currAngle) {
+                        case 0:
+                            weapon.setX(player.getX());
+                            weapon.setY(player.getY() + 100);
+                            break;
+                        case 90:
+                            weapon.setX(player.getX() + 100);
+                            weapon.setY(player.getY());
+                            break;
+                        case 180:
+                            weapon.setX(player.getX());
+                            weapon.setY(player.getY() - 100);
+                            break;
+                        case 270:
+                            weapon.setX(player.getX() - 100);
+                            weapon.setY(player.getY());
+                            break;
+                        default:
+                            break;
+                    }
+                    for (int i = 0; i < enemies.length; i++) {
+                        if (enemies[i] != null) {
+                            if (Math.abs(weapon.getX() - enemies[i].getX()) < 25
+                                    || Math.abs(weapon.getY() - enemies[i].getY()) < 25) {
+                                enemies[i] = null;
+                                enemySprites[i].setVisibility(View.INVISIBLE);
+                                Leaderboard.setScore(Leaderboard.getScore() + 500);
+                                player.setHealth(player.getHealth() + 50);
+                            }
+                        }
+                    }
+                    currAngle += 90;
+                    if (count++ != 3) {
+                        handler.postDelayed(this, 100);
+                    } else {
+                        weapon.setVisibility(View.INVISIBLE);
+                        player.toggleCanAttack();
+                    }
+                }
+            });
+        }
+    }
+
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         Player player = Player.getPlayer();
         switch (keyCode) {
@@ -157,9 +221,11 @@ public class Map1 extends AppCompatActivity {
         handler.post(new Runnable() {
             public void run() {
                 for (int i = 0; i < enemies.length; i++) {
-                    enemies[i].move();
-                    enemySprites[i].setX(enemies[i].getX());
-                    enemySprites[i].setY(enemies[i].getY());
+                    if (enemies[i] != null) {
+                        enemies[i].move();
+                        enemySprites[i].setX(enemies[i].getX());
+                        enemySprites[i].setY(enemies[i].getY());
+                    }
                     updateHealth();
                 }
                 handler.postDelayed(this, 300);
