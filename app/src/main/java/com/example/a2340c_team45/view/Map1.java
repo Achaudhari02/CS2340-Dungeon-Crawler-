@@ -20,7 +20,7 @@ import com.example.a2340c_team45.Strategy.MoveUpDown;
 import com.example.a2340c_team45.models.Enemy;
 import com.example.a2340c_team45.models.EnemyFactory;
 import com.example.a2340c_team45.models.Player;
-import com.example.a2340c_team45.models.Powerup1;
+import com.example.a2340c_team45.models.PowerUp1Decorator;
 import com.example.a2340c_team45.viewmodel.Leaderboard;
 
 public class Map1 extends AppCompatActivity {
