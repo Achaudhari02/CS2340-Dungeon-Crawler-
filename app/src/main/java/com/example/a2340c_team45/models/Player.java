@@ -97,7 +97,9 @@ public class Player {
     public boolean getHasPowerup2() {
         return hasPowerup2;
     }
-    public boolean getHasPowerup3(){return hasPowerup3;}
+    public boolean getHasPowerup3() {
+        return hasPowerup3;
+    }
 
     public void setHasPowerup1(boolean bool) {
         hasPowerup1 = bool;
@@ -105,7 +107,9 @@ public class Player {
     public void setHasPowerup2(boolean bool) {
         hasPowerup2 = bool;
     }
-    public void setHasPowerup3(boolean bool){hasPowerup3 = bool;}
+    public void setHasPowerup3(boolean bool) {
+        hasPowerup3 = bool;
+    }
 
     public void decreaseHealth(int damage) {
         this.health -= damage;

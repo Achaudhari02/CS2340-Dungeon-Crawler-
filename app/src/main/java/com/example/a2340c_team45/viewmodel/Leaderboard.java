@@ -72,7 +72,9 @@ public class Leaderboard {
     public static int getScore() {
         return score;
     }
-    public static int updateScore() {return score - time;}
+    public static int updateScore() {
+        return score - time;
+    }
     public static void setScore(int newScore) {
         score = newScore;
     }

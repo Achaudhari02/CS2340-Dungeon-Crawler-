@@ -22,7 +22,6 @@ import com.example.a2340c_team45.Strategy.MoveUpDown;
 import com.example.a2340c_team45.models.Enemy;
 import com.example.a2340c_team45.models.EnemyFactory;
 import com.example.a2340c_team45.models.Player;
-import com.example.a2340c_team45.models.PowerUp1Decorator;
 import com.example.a2340c_team45.models.Weapon;
 import com.example.a2340c_team45.viewmodel.Leaderboard;
 
@@ -123,8 +122,10 @@ public class Map1 extends AppCompatActivity {
         player.notifySubscribers();
         playerSprite.setX(player.getX());
         playerSprite.setY(player.getY());
-        if (player.getX() + 50 >= powerup1Sprite.getX() && player.getX() - 50 <= powerup1Sprite.getX()
-            && player.getY() + 50 >= powerup1Sprite.getY() && player.getY() - 50 <= powerup1Sprite.getY()) {
+        if (player.getX() + 50 >= powerup1Sprite.getX() && player.getX() - 50
+                <= powerup1Sprite.getX()
+            && player.getY() + 50 >= powerup1Sprite.getY() && player.getY() - 50
+                <= powerup1Sprite.getY()) {
             player.setHasPowerup1(true);
             powerup1Sprite.setImageAlpha(0);
         }
@@ -210,7 +211,7 @@ public class Map1 extends AppCompatActivity {
         });
     }
 
-    boolean doOnce = true;
+    private boolean doOnce = true;
     private void updateHealth() {
         int health = Player.getPlayer().getHealth();
         if (health == 0 && doOnce) {

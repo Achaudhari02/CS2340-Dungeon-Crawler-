@@ -1,9 +1,5 @@
 package com.example.a2340c_team45.models;
 
-import android.view.View;
-
-import com.example.a2340c_team45.viewmodel.Leaderboard;
-
 public class Weapon {
     private static Weapon weapon;
     private int x;
@@ -34,25 +30,25 @@ public class Weapon {
 
     public boolean swing() {
         Player player = Player.getPlayer();
-        switch(currAngle) {
-            case 0:
-                weapon.setX(player.getX());
-                weapon.setY(player.getY() + 100);
-                break;
-            case 90:
-                weapon.setX(player.getX() + 100);
-                weapon.setY(player.getY());
-                break;
-            case 180:
-                weapon.setX(player.getX());
-                weapon.setY(player.getY() - 100);
-                break;
-            case 270:
-                weapon.setX(player.getX() - 100);
-                weapon.setY(player.getY());
-                break;
-            default:
-                break;
+        switch (currAngle) {
+        case 0:
+            weapon.setX(player.getX());
+            weapon.setY(player.getY() + 100);
+            break;
+        case 90:
+            weapon.setX(player.getX() + 100);
+            weapon.setY(player.getY());
+            break;
+        case 180:
+            weapon.setX(player.getX());
+            weapon.setY(player.getY() - 100);
+            break;
+        case 270:
+            weapon.setX(player.getX() - 100);
+            weapon.setY(player.getY());
+            break;
+        default:
+            break;
         }
         currAngle += 90;
         if (currAngle == 360) {
@@ -61,7 +57,7 @@ public class Weapon {
         Enemy[] enemies = Enemy.getEnemies();
         boolean hitEnemy = false;
         for (int i = 0; i < enemies.length; i++) {
-            if(enemies[i] != null && checkCollisionWithEnemy(enemies[i])) {
+            if (enemies[i] != null && checkCollisionWithEnemy(enemies[i])) {
                 hitEnemy = true;
                 enemies[i] = null;
             }
