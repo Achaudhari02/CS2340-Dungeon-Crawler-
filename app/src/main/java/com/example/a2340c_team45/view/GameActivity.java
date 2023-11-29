@@ -119,7 +119,7 @@ public class GameActivity extends AppCompatActivity {
                             if (enemies[i] == null) {
                                 enemySprites[i].setVisibility(View.INVISIBLE);
                                 Leaderboard.setScore(Leaderboard.getScore() + 500);
-                                Player.getPlayer().setHealth(Player.getPlayer().getHealth() + 50);
+                                Player.getPlayer().setHealth(Player.getPlayer().getHealth() + 2);
                             }
                         }
                     }

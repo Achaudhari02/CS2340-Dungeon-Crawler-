@@ -61,11 +61,7 @@ public abstract class Enemy {
     }
 
     public void checkCollAndHP(Player player, Enemy enemy) {
-        if (isColliding(player, enemy) && !player.getHasPowerup1()) {
-            player.decreaseHealth(enemy.getStrength());
-        }
         if (isColliding(player, enemy) && canHit && !player.getHasPowerup1()) {
-
             player.decreaseHealth(enemy.getStrength());
             Handler h = new Handler();
             canHit = false;
