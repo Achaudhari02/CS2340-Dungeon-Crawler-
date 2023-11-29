@@ -43,7 +43,7 @@ public class GameActivity extends AppCompatActivity {
 
     //Enemy ImageViews
     private ImageView[] enemySprites;
-    Enemy[] enemies;
+    private Enemy[] enemies;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
