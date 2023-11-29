@@ -46,7 +46,6 @@ public class Map3 extends AppCompatActivity {
         player.setX(0);
         player.setY(0);
         playerHealth = findViewById(R.id.playerHealth);
-        player.setHasPowerup2(false);
         enemies = initializeEnemies();
         startEnemyMovement();
     }

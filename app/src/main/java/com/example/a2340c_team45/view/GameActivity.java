@@ -77,6 +77,7 @@ public class GameActivity extends AppCompatActivity {
         player.setY(0);
         updateScore();
         Leaderboard lb = Leaderboard.getLeaderboard();
+        player.setHasPowerup2(false);
 
         //Initialize Enemies
         enemies = initializeEnemies();
