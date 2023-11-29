@@ -20,6 +20,7 @@ import com.example.a2340c_team45.Strategy.MoveUpDown;
 import com.example.a2340c_team45.models.Enemy;
 import com.example.a2340c_team45.models.EnemyFactory;
 import com.example.a2340c_team45.models.Player;
+import com.example.a2340c_team45.models.PowerUp2Decorator;
 import com.example.a2340c_team45.viewmodel.Leaderboard;
 public class Map2 extends AppCompatActivity {
     private String name;
@@ -30,6 +31,7 @@ public class Map2 extends AppCompatActivity {
     private String diffStr;
     private Enemy[] enemies;
     private ImageView[] enemySprites;
+    private ImageView powerup2Sprite;
     private TextView playerHealth;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,9 @@ public class Map2 extends AppCompatActivity {
         player.setY(0);
         playerHealth = findViewById(R.id.playerHealth);
         player.setHasPowerup1(false);
+        powerup2Sprite = findViewById(R.id.powerup2);
+        powerup2Sprite.setX(16);
+        powerup2Sprite.setY(97);
         enemies = initializeEnemies();
         startEnemyMovement();
     }
@@ -75,6 +80,11 @@ public class Map2 extends AppCompatActivity {
         player.notifySubscribers();
         playerSprite.setX(player.getX());
         playerSprite.setY(player.getY());
+        if (player.getX() + 50 >= powerup2Sprite.getX() && player.getX() - 50 <= powerup2Sprite.getX()
+                && player.getY() + 50 >= powerup2Sprite.getY() && player.getY() - 50 <= powerup2Sprite.getY()) {
+            player.setHasPowerup2(true);
+            powerup2Sprite.setImageAlpha(0);
+        }
         if (player.getX() >= 930 && player.getY() >= 500 && player.getY() <= 600) {
             goToNextScene();
         }

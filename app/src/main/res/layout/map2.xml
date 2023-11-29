@@ -82,4 +82,12 @@
         tools:layout_editor_absoluteX="211dp"
         tools:layout_editor_absoluteY="215dp" />
 
+    <ImageView
+        android:id="@+id/powerup2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/btn_star_big_on"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="97dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

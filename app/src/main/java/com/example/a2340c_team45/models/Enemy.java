@@ -62,7 +62,7 @@ public abstract class Enemy {
             Handler h = new Handler();
             canHit = false;
             h.postDelayed(toggleCanHit, 1000);
-            lb.setScore(Leaderboard.getScore() - 100);
+            Leaderboard.setScore(Leaderboard.getScore() - 100);
         }
     }
 
