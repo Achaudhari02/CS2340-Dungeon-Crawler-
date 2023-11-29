@@ -14,4 +14,12 @@ public class HasPowerup2Test {
 
         assertTrue(player.getHasPowerup2());
     }
+
+    @Test
+    public void testNotHasP2() {
+        Player player = Player.getPlayer();
+        player.setHasPowerup2(false);
+
+        assertTrue(player.getHasPowerup2());
+    }
 }
