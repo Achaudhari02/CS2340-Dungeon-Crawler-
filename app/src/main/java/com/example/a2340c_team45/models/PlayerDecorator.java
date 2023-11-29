@@ -6,7 +6,7 @@ public abstract class PlayerDecorator {
 
     private boolean isCollected = false;
 
-    public PlayerDecorator(Player player) {
+    public PlayerDecorator() {
 
     }
 

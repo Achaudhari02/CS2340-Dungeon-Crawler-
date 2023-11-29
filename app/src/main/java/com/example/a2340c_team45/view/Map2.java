@@ -23,6 +23,7 @@ import com.example.a2340c_team45.models.Enemy;
 import com.example.a2340c_team45.models.EnemyFactory;
 import com.example.a2340c_team45.models.Player;
 import com.example.a2340c_team45.models.PowerUp2Decorator;
+import com.example.a2340c_team45.models.Weapon;
 import com.example.a2340c_team45.viewmodel.Leaderboard;
 public class Map2 extends AppCompatActivity {
     private String name;
@@ -57,7 +58,8 @@ public class Map2 extends AppCompatActivity {
         powerup2Sprite = findViewById(R.id.powerup2);
         powerup2Sprite.setX(87);
         powerup2Sprite.setY(139);
-        enemies = initializeEnemies();
+        Enemy.setEnemies(initializeEnemies());
+        enemies = Enemy.getEnemies();
         startEnemyMovement();
 
         ImageButton attackButton = findViewById(R.id.attackButton);
@@ -67,53 +69,31 @@ public class Map2 extends AppCompatActivity {
     }
 
     private void attack() {
-        Player player = Player.getPlayer();
-        if (player.willAttack()) {
+        Weapon weapon = Weapon.getWeapon();
+        if (weapon.willAttack()) {
             final Handler handler = new Handler();
-            ImageView weapon = findViewById(R.id.weapon);
-            weapon.setVisibility(View.VISIBLE);
+            ImageView weaponSprite = findViewById(R.id.weapon);
+            weaponSprite.setVisibility(View.VISIBLE);
             handler.post(new Runnable() {
-                int currAngle = 0;
-                int count = 0;
                 public void run() {
-                    weapon.setRotation(currAngle);
-                    switch(currAngle) {
-                        case 0:
-                            weapon.setX(player.getX());
-                            weapon.setY(player.getY() + 100);
-                            break;
-                        case 90:
-                            weapon.setX(player.getX() + 100);
-                            weapon.setY(player.getY());
-                            break;
-                        case 180:
-                            weapon.setX(player.getX());
-                            weapon.setY(player.getY() - 100);
-                            break;
-                        case 270:
-                            weapon.setX(player.getX() - 100);
-                            weapon.setY(player.getY());
-                            break;
-                        default:
-                            break;
-                    }
-                    for (int i = 0; i < enemies.length; i++) {
-                        if (enemies[i] != null) {
-                            if (Math.abs(weapon.getX() - enemies[i].getX()) < 25
-                                    || Math.abs(weapon.getY() - enemies[i].getY()) < 25) {
-                                enemies[i] = null;
+                    if (weapon.swing()) {
+                        enemies = Enemy.getEnemies();
+                        for (int i = 0; i < enemies.length; i++) {
+                            if (enemies[i] == null) {
                                 enemySprites[i].setVisibility(View.INVISIBLE);
                                 Leaderboard.setScore(Leaderboard.getScore() + 500);
-                                player.setHealth(player.getHealth() + 50);
+                                Player.getPlayer().setHealth(Player.getPlayer().getHealth() + 50);
                             }
                         }
                     }
-                    currAngle += 90;
-                    if (count++ != 3) {
+                    weaponSprite.setRotation(weapon.getCurrAngle());
+                    weaponSprite.setX(weapon.getX());
+                    weaponSprite.setY(weapon.getY());
+                    if (weapon.getCurrAngle() != 0) {
                         handler.postDelayed(this, 100);
                     } else {
-                        weapon.setVisibility(View.INVISIBLE);
-                        player.toggleCanAttack();
+                        weaponSprite.setVisibility(View.INVISIBLE);
+                        weapon.toggleCanAttack();
                     }
                 }
             });
