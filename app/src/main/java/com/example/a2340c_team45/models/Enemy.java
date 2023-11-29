@@ -22,6 +22,15 @@ public abstract class Enemy {
     public int getY() {
         return y;
     }
+    private static Enemy[] enemies;
+    public static void setEnemies(Enemy[] incomingEnemies) {
+        enemies = incomingEnemies;
+    }
+
+    public static Enemy[] getEnemies() {
+        return enemies;
+    }
+
 
     public void subscribe(EnemySubscriber subscriber) {
         subscribers.add(subscriber);

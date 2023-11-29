@@ -7,6 +7,8 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.KeyEvent;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,6 +23,7 @@ import com.example.a2340c_team45.models.Enemy;
 import com.example.a2340c_team45.models.EnemyFactory;
 import com.example.a2340c_team45.models.Player;
 import com.example.a2340c_team45.models.PowerUp1Decorator;
+import com.example.a2340c_team45.models.Weapon;
 import com.example.a2340c_team45.viewmodel.Leaderboard;
 
 public class Map1 extends AppCompatActivity {
@@ -57,10 +60,48 @@ public class Map1 extends AppCompatActivity {
         powerup1Sprite = findViewById(R.id.powerup1);
         powerup1Sprite.setX(200);
         powerup1Sprite.setY(300);
-        enemies = initializeEnemies();
+        Enemy.setEnemies(initializeEnemies());
+        enemies = Enemy.getEnemies();
         startEnemyMovement();
 
+        ImageButton attackButton = findViewById(R.id.attackButton);
+        attackButton.setOnClickListener(v -> {
+            attack();
+        });
     }
+
+    private void attack() {
+        Weapon weapon = Weapon.getWeapon();
+        if (weapon.willAttack()) {
+            final Handler handler = new Handler();
+            ImageView weaponSprite = findViewById(R.id.weapon);
+            weaponSprite.setVisibility(View.VISIBLE);
+            handler.post(new Runnable() {
+                public void run() {
+                    if (weapon.swing()) {
+                        enemies = Enemy.getEnemies();
+                        for (int i = 0; i < enemies.length; i++) {
+                            if (enemies[i] == null) {
+                                enemySprites[i].setVisibility(View.INVISIBLE);
+                                Leaderboard.setScore(Leaderboard.getScore() + 500);
+                                Player.getPlayer().setHealth(Player.getPlayer().getHealth() + 50);
+                            }
+                        }
+                    }
+                    weaponSprite.setRotation(weapon.getCurrAngle());
+                    weaponSprite.setX(weapon.getX());
+                    weaponSprite.setY(weapon.getY());
+                    if (weapon.getCurrAngle() != 0) {
+                        handler.postDelayed(this, 100);
+                    } else {
+                        weaponSprite.setVisibility(View.INVISIBLE);
+                        weapon.toggleCanAttack();
+                    }
+                }
+            });
+        }
+    }
+
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         Player player = Player.getPlayer();
         switch (keyCode) {
@@ -157,9 +198,11 @@ public class Map1 extends AppCompatActivity {
         handler.post(new Runnable() {
             public void run() {
                 for (int i = 0; i < enemies.length; i++) {
-                    enemies[i].move();
-                    enemySprites[i].setX(enemies[i].getX());
-                    enemySprites[i].setY(enemies[i].getY());
+                    if (enemies[i] != null) {
+                        enemies[i].move();
+                        enemySprites[i].setX(enemies[i].getX());
+                        enemySprites[i].setY(enemies[i].getY());
+                    }
                     updateHealth();
                 }
                 handler.postDelayed(this, 300);
