@@ -91,7 +91,7 @@ public class Map3 extends AppCompatActivity {
         final Handler handler = new Handler();
         handler.post(new Runnable() {
             public void run() {
-                scoreView.setText("Score:" + Leaderboard.getScore());
+                scoreView.setText("Score:" + Leaderboard.updateScore());
                 handler.postDelayed(this, 1000);
             }
         });
