@@ -16,7 +16,7 @@ public class HasPowerup1Test {
     }
 
     @Test
-    public void testHasP2() {
+    public void testNotHasP1() {
         Player player = Player.getPlayer();
         player.setHasPowerup1(false);
 
